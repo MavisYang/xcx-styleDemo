@@ -1,0 +1,25 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/order/index",
+    "pages/PDetail/detail",
+    "pages/pay/pay",
+    "pages/adr/index",
+    "pages/orderDetail/orderDetail",
+    "pages/logistics/logistics",
+    "pages/sucessPay/sucessPay",
+    "pages/refund/refund",
+    "pages/refund/iptMessage/iptMessage",
+    "pages/refund/iptNum/iptNum",
+    "pages/refund/refundDetail/refundDetail",
+    "pages/IdCard/IdCard",
+    "pages/store/store",
+    "pages/aMavis/mavis"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "栗子集市",
+    "navigationBarTextStyle": "black"
+  }
+}

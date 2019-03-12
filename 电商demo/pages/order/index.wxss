@@ -1,0 +1,239 @@
+.order {
+    height: 100%;
+    width: 100%;
+    background: #F6F6F6;
+}
+
+.imageIC {
+    width: 240rpx;
+    height: 150rpx;
+    margin-bottom: 30rpx;
+}
+
+.order .header {
+    height: 88rpx;
+    border-top: 1px solid #F6F6F6;
+    display: flex;
+    background: #fff;
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    color: #444444;
+    letter-spacing: 0;
+    align-items: center;
+    padding: 0 15rpx;
+    margin-bottom: 20rpx;
+}
+
+.order .header .headerItem {
+    flex: 1;
+    text-align: center;
+    height: 88rpx;
+    line-height: 88rpx;
+    border-bottom: 4rpx solid #fff;
+}
+
+.order .header .headerItem.active {
+    border-bottom: 4rpx solid #F03340;
+    color: #F03340;
+}
+
+.order .content {
+    height: calc( 100% - 110rpx);
+}
+
+.order .content .contentItem {
+    background: #fff;
+    padding: 0 24rpx;
+    margin-bottom: 20rpx;
+}
+
+.order .content .contentItem .itemHeader {
+    padding: 24rpx 0;
+    border-bottom: 1px solid #e8e8e8;
+    display: flex;
+    align-items: center;
+}
+
+.createDate {
+    font-size: 28rpx;
+    color: #444444;
+}
+
+.order .content .contentItem .itemHeader .userImg {
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 100%;
+    margin-right: 20rpx;
+}
+
+.order .content .contentItem .itemHeader .itemMessage {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.order .content .contentItem .itemHeader .messageItem {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.order .content .contentItem .itemHeader .messageItem .name {
+    font-family: PingFangSC-Medium;
+    font-size: 28rpx;
+    color: #444444;
+    letter-spacing: 0;
+    margin-bottom: 10rpx;
+}
+
+.order .content .contentItem .itemHeader .messageItem .orderStuts {
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    color: #F03340;
+    letter-spacing: 0;
+}
+
+.order .content .contentItem .itemHeader .messageItem .orderNo {
+    font-family: PingFangSC-Regular;
+    font-size: 26rpx;
+    color: #a1a1a1;
+    letter-spacing: 0;
+}
+
+.order .content .contentItem .itemHeader .messageItem .productNum {
+    font-family: PingFangSC-Regular;
+    font-size: 26rpx;
+    color: #A1A1A1;
+    letter-spacing: 0;
+}
+
+.order .content .itemcontent .PlistItem {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 30rpx 0;
+}
+
+.order .content .itemcontent .PlistItem .itemImg {
+    width: 130rpx;
+    height: 130rpx;
+    border-radius: 4rpx;
+    margin-right: 20rpx;
+}
+
+.order .content .itemcontent .PlistItem .pListContent {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 130rpx;
+}
+
+.order .content .itemcontent .PlistItem .pListContent .title {
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    color: #444444;
+}
+
+.order .content .itemcontent .PlistItem .pListContent .pListNum {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.order .content .itemcontent .PlistItem .pListContent .pListText,
+.order .content .itemcontent .PlistItem .pListContent .pListNum .num {
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    color: #A1A1A1;
+}
+
+.order .content .itemcontent .PlistItem .pListContent .pListNum .price {
+    font-family: PingFangSC-Regular;
+    font-size: 24rpx;
+    color: #A1A1A1;
+    letter-spacing: 0;
+}
+
+.order .content .itemcontent .PlistItem .pListContent .pListNum .price text {
+    font-size: 30rpx;
+}
+
+.order .content .itemPrice {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 22rpx 0 30rpx 0;
+}
+
+.order .content .itemPrice .title1 {
+    font-family: PingFangSC-Regular;
+    font-size: 26rpx;
+    color: #444444;
+    letter-spacing: 0;
+}
+
+.order .content .itemPrice .unit1 {
+    font-family: PingFangSC-Medium;
+    font-size: 24rpx;
+    color: #000000;
+    letter-spacing: 0;
+    line-height: 37rpx;
+}
+
+.order .content .itemPrice .price1 {
+    font-family: PingFangSC-Medium;
+    font-size: 34rpx;
+    color: #000000;
+    letter-spacing: 0;
+    line-height: 37rpx;
+}
+
+.order .content .itemPrice .mar {
+    margin-right: 10rpx;
+}
+
+.order .itemFooter {
+    border-top: 1px solid #e8e8e8;
+    padding: 30rpx 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.order .itemFooter .goLogistics {
+    border: 1px solid #A1A1A1;
+    border-radius: 100px;
+    width: 120rpx;
+    height: 60rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 26rpx;
+    color: #444444;
+    display: block;
+    text-align: center;
+    line-height: 60rpx;
+}
+
+.noCodeBox {
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50%;
+    box-sizing: border-box;
+}
+
+.noCode {
+    width: 146rpx;
+    height: 184rpx;
+    background-position: -379rpx -290rpx;
+    display: block;
+    margin-bottom: 20rpx;
+}
+
+.noCodeText {
+    font-size: 28rpx;
+    color: #B5ADAD;
+}

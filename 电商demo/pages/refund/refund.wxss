@@ -1,0 +1,152 @@
+/* pages/user/refund/refund.wxss */
+
+.refund {
+    height: 100%;
+    overflow: hidden;
+    background: #f3f3f3;
+}
+
+.myOrderContent {
+    font-size: 28rpx;
+    height: 100%;
+}
+
+.myOrderItems {
+    padding: 30rpx 24rpx;
+    margin-top: 20rpx;
+}
+
+.myOrderItem {
+    display: flex;
+    padding-bottom: 10rpx;
+}
+
+.myOrderItemContent {
+    padding-bottom: 17rpx;
+    margin-bottom: 15rpx;
+}
+
+.myOrderItemContent>view {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.myOrderItem.bwt {
+    justify-content: space-between;
+    padding-bottom: 20rpx;
+}
+
+.myOrderItem.flexEnd {
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.flexEndStyle {
+    padding-bottom: 3px;
+}
+
+.myOrderItemBtnBox {
+    padding-top: 34rpx;
+}
+
+.myOrderItem.myOrderItemBtnBox text {
+    margin-left: 20rpx;
+    font-size: 30rpx;
+    border-radius: 60rpx;
+    width: 160rpx;
+    text-align: center;
+    height: 60rpx;
+    line-height: 60rpx;
+    box-sizing: border-box;
+}
+
+.myOrderItemBtnBoxColor9b9 {
+    color: #444;
+    border: 1px solid #a1a1a1;
+}
+
+.myOrderItem>image {
+    width: 160rpx;
+    height: 160rpx;
+    /* background: #000 */
+}
+
+.myOrderItem>view {
+    flex: 1;
+}
+
+.myOrderItem>view .myOrderItem {
+    padding: 0 0 0 30rpx;
+}
+
+.myColor9B9191 {
+    color: #a1a1a1;
+}
+
+.myColor444 {
+    color: #444;
+}
+
+.textRight {
+    justify-content: flex-end
+}
+
+.noCodeBox {
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50%;
+    box-sizing: border-box;
+}
+
+.noCode {
+    width: 146rpx;
+    height: 184rpx;
+    background-position: -379rpx -290rpx;
+    display: block;
+    margin-bottom: 20rpx;
+}
+
+.noCodeText {
+    font-size: 28rpx;
+    color: #a1a1a1;
+}
+
+.itemMessage {
+    flex: 1;
+}
+
+.itemHeader {
+    padding-bottom: 20rpx;
+    border-bottom: 1px solid #e8e8e8;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20rpx;
+}
+
+.itemHeader .messageItem {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.order .content .contentItem .itemHeader .messageItem .name {
+    flex: 1;
+}
+
+.itemHeader .userImg {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 100%;
+    margin-right: 20rpx;
+}
+
+.imageIC {
+    width: 240rpx;
+    height: 150rpx;
+    margin-bottom: 30rpx;
+}

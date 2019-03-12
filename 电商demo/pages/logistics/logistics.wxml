@@ -1,0 +1,77 @@
+<!--pages/user/logistics/logistics.wxml-->
+<wxs src="./../../utils/filter.wxs" module="filter" />
+<view class="logistics">
+    <view class="logisticsHeader bgColor border-top">
+        <view class="logisticsHeaderContent">
+            <view class="logisticsHeaderContentImgBox" bindtap='lookImg'>
+                <image src='{{logisticsD.ftDetails[0].productSkuPic}}' class="logisticsHeaderContentImg"></image>
+                <text class="logisticsHeaderContentImgText">共{{logisticsD.ftDetails.length}}个商品</text>
+            </view>
+            <view class="logisticsHeaderContentText">
+                <text class="logisticsHeaderContentTextAdr">收货人地址：{{logisticsD.toAddr}}</text>
+                <view class="logisticsHeaderContentTextMessage">
+                    <text class="logisticsHeaderContentTextMessageNum">
+                        <text>订单编号：</text>
+                        <text>{{logisticsD.orderNo}}</text>
+                    </text>
+                    <!-- <text class="logisticsHeaderContentTextMessageSum">{{logisticsM.length}}个包裹</text> -->
+                </view>
+            </view>
+        </view>
+        <image src='/images/line.png' class="logisticsHeaderImg"></image>
+    </view>
+    <scroll-view class="logisticsbox" scroll-y='{{scrollYState}}'>
+        <view class="bgColor">
+            <view class="TimelineBOX" wx:for='{{logisticsM}}' wx:for-index="idx" wx:for-item="logisticsLists"
+                wx:key='idx'>
+                <view class="TimelineMessage">
+                    <text>{{logisticsLists.expressCourier.name}}：{{logisticsLists.expressNo}}</text>
+                    <text>包裹{{idx+1}}</text>
+                </view>
+                <view class="Timeline bgColor">
+                    <view class="Timeline-content">
+                        <block wx:if="{{logisticsLists.details.length}}">
+                            <view class="{{index == 0 ? 'boxItem fristItemColor':'boxItem'}}" wx:for='{{logisticsLists.details}}'
+                                wx:key='index'>
+                                <view class="boxItemDate">
+                                    <view>{{filter.getDateQ(item.processTime)}}</view>
+                                    <view class="time">{{filter.getDateH(item.processTime)}}</view>
+                                </view>
+                                <text class="{{index == 0 ?'boxItemDutton once':'boxItemDutton nullce '}}"></text>
+                                <text class="boxItemText">{{item.comments}}
+                                    <text class="telphoneColor" wx:if='{{item.processorId}}'>{{item.processorId}} </text>
+                                    <text class="telphoneColor" wx:if="{{item.processorName}}">{{item.processorName}}</text>
+                                </text>
+                            </view>
+                        </block>
+                        <view wx:else class='boxItem'>暂无快递数据</view>
+                    </view>
+                </view>
+                <view class="TimelineLine">
+                    <text></text>
+                </view>
+            </view>
+        </view>
+        <view class="previewBox" hidden='{{scrollYState}}'>
+            <view class="previewSwiper">
+                <view class="previewSwiperItem">
+                    <view>
+                        <image src='{{logisticsD.ftDetails[0].productSkuPic}}' />
+                        <text>1/1</text>
+                        <span class="delIcon iconBackground icons" catchtap='closePreview'></span>
+                    </view>
+                </view>
+            </view>
+            <!-- <swiper class="previewSwiper">
+                <swiper-item class="previewSwiperItem" wx:for='{{logisticsData[0].imgArr.imgObj}}'
+                    wx:key='{{index}}'>
+                    <view>
+                        <image src='{{item}}'></image>
+                        <text>{{index+1}}/{{logisticsData[0].imgArr.imgObj.length}}</text>
+                        <span class="delIcon iconBackground icons" catchtap='closePreview'></span>
+                    </view>
+                </swiper-item>
+            </swiper> -->
+        </view>
+    </scroll-view>
+</view>

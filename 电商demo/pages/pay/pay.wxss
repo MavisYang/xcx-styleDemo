@@ -1,0 +1,227 @@
+/* pages/find/pay/pay.wxss */
+
+.payBox {
+    height: 100%;
+    overflow: hidden;
+    color: #444;
+}
+
+.messageSocket,
+.monecySum {
+    margin-bottom: 40rpx;
+}
+
+.goodsMessage {
+    height: calc( 100% - 430rpx);
+    padding: 0 30rpx;
+    border-top: 20rpx solid #f6f6f6;
+    font-size: 28rpx;
+    box-sizing: border-box;
+}
+
+.monecySum,
+.messageSocket {
+    padding: 30rpx 30rpx;
+    font-size: 28rpx;
+}
+
+.sumMoney,
+.shipping,
+.messageBoard {
+    padding: 30rpx 0;
+}
+
+.monecySum view,
+.messageSocket,
+.sumMoney,
+.shipping,
+.messageBoard,
+.payaAdr>view,
+.goodsMessageBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.shipping>view {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 26rpx;
+    flex: 1;
+}
+
+.shipping>view input {
+    width: 100%;
+}
+
+.payaAdr {
+    min-height: 217rpx;
+}
+
+.addAdrimg {
+    width: 44rpx;
+    height: 54rpx;
+    margin-right: 40rpx;
+}
+
+.rightArrow {
+    background-position: -54rpx -478rpx;
+    margin-right: 30rpx;
+    width: 44rpx;
+    height: 44rpx;
+}
+
+.payaAdr>view {
+    width: 100%;
+    min-height: 217rpx;
+    padding: 0 20rpx;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 28rpx;
+    color: #333333;
+}
+
+.payaAdr .addAdr,
+.payaAdr .selectAdr {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.addAdrtext {
+    flex: 1;
+}
+
+.shopMessage {
+    padding-bottom: 15rpx;
+}
+
+.goodsMessageContent view {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.goodsMessageBox {
+    padding: 30rpx 0;
+    position: relative;
+}
+
+.goodsMessageBox image {
+    width: 130rpx;
+    height: 130rpx;
+    margin-right: 25rpx;
+}
+
+.goodsMessageBox .jingwai {
+    position: absolute;
+    top: 0;
+    font-size: 10px;
+    border: 1rpx solid rgb(223, 86, 86);
+    border-radius: 4rpx;
+}
+
+.messageBoard input,
+.goodsMessageContent,
+.payaAdr>view text:nth-of-type(2) {
+    flex: 1;
+}
+
+.goodsMessageContent>view:nth-of-type(1) {
+    margin-bottom: 30rpx;
+}
+
+.monecySum view:nth-of-type(3),
+.sumMoney text:nth-of-type(2) {
+    color: rgb(223, 86, 86);
+}
+
+.payFooterBtn {
+    height: 100rpx;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 28rpx;
+    position: absolute;
+    bottom:0;
+}
+
+.payFooterBtn .payFooterEnter {
+    flex: 1;
+    height: 100rpx;
+    line-height: 100rpx;
+    justify-content: center;
+    font-family: PingFangSC-Medium;
+    font-size: 36rpx;
+}
+
+.payFooterBtn>view {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    /* justify-content: flex-end;
+     */
+    margin-left: 24rpx;
+    font-size: 30rpx;
+}
+
+.payFooterBtn>view text {
+    font-family: PingFangSC-Regular;
+    color: #333333;
+}
+
+.payFooterBtn>view text:nth-of-type(2) {
+    margin-right: 30rpx;
+}
+
+.marginBottom20 {
+    margin-bottom: 20rpx;
+    /* display: flex; */
+    /* justify-content: space-between; */
+}
+
+.marginBottom20 text:nth-of-type(1) {
+    margin-right: 30rpx;
+    font-size: 30rpx;
+}
+
+.marginBottom20 text:nth-of-type(2) {
+    font-size: 26rpx;
+}
+
+.payFooternum {
+    display: flex;
+    align-items: flex-end;
+}
+
+.colorB5ADAD {
+    color: #B5ADAD
+}
+
+.IDCard {
+    display: flex;
+    font-size: 28rpx;
+    color: #333333;
+    height: 100rpx;
+    line-height: 100rpx;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 10rpx 0 30rpx;
+    box-sizing: border-box;
+    border-top: 20rpx solid #f6f6f6;
+}
+
+.IDCard .rightArrow {
+    margin-right: 0;
+}
+
+.IDCard .text {
+    color: #A1A1A1;
+}
+
+.IDCard .middle {
+    flex: 1;
+    padding: 0 20rpx;
+}

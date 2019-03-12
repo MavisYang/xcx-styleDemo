@@ -1,0 +1,62 @@
+/* pages/find/sucessPay/sucessPay.wxss */
+
+.sucessPay {
+    height: 100%;
+}
+
+.sucessPayHeader {
+    width: 100%;
+    height: 370rpx;
+    padding: 120rpx 40rpx 0 40rpx;
+    box-sizing: border-box;
+}
+
+.sucessPayHeaderImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 120rpx;
+}
+
+.sucessPayHeaderImg .successIocn {
+    width: 96rpx;
+    height: 96rpx;
+    margin-right: 15rpx;
+    background-position: -264rpx -126rpx;
+}
+
+.sucessPayHeaderTitle {
+    font-family: PingFangSC-Regular;
+    font-size: 30rpx;
+    color: #333333;
+}
+
+.sucessPayHeaderContent {
+    display: flex;
+    margin-bottom: 20rpx;
+    justify-content: space-between
+}
+
+.sucessPayHeaderContent>button {
+    color: #333333;
+    border: 2rpx solid #999;
+    width: 45%;
+    border: none;
+    background: #fff;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-family: PingFangSC-Medium;
+    font-size: 36rpx;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.sucessPayHeaderContent>button.left {
+    border: 1px solid #F45C43;
+    color: #F45C43;
+}
+
+.sucessPayHeaderContent>button.right {
+    background: linear-gradient(163deg, #ff835c, #eb3449)!important;
+    color: #fff !important;
+}

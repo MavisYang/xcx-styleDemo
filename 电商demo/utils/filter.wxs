@@ -1,0 +1,319 @@
+
+/**
+ * 时间格式化
+ */
+var DateFr = {
+    getDate: function (time) {
+        if (!time) return '';
+        var date = getDate(time);
+        var year = date.getFullYear()
+        var month = date.getMonth() + 1
+        var day = date.getDate()
+        var hour = date.getHours()
+        var minute = date.getMinutes()
+        var second = date.getSeconds()
+        return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+    },
+    getDateQ: function (time) {
+        if (!time) return '';
+        var date = getDate(time);
+        var month = date.getMonth() + 1
+        var day = date.getDate()
+        return [month, day].map(formatNumber).join('-')
+    },
+    getDateH: function (time) {
+        if (!time) return '';
+        var date = getDate(time);
+        var hour = date.getHours()
+        var minute = date.getMinutes()
+        return [hour, minute].map(formatNumber).join(':')
+    }
+}
+
+/**
+ * 格式化数据，两位小数
+ */
+var Float2 = function (num) {
+    var sum = parseFloat(num);
+    if (sum) {
+        return sum.toFixed(2);
+    } else {
+        return '0.00'
+    }
+
+}
+/**
+ * 补零
+ */
+var formatNumber = function (n) {
+    n = n.toString()
+    return n[1] ? n : '0' + n
+}
+/**
+ * 手机号码格式化
+ */
+var formatPhoneNum = function (arr) {
+    var arr1 = arr.substring(0, 3);
+    var arr2 = arr.substring(7);
+    return arr1 + '****' + arr2;
+};
+/**
+ * 
+ * @param str 显示26个字符
+ */
+var formatText28 = function (str) {
+    if (str) {
+        if (str.length > 32) {
+            return str.substring(0, 26) + '...';
+        } else {
+            return str
+        }
+    }
+};
+
+/**
+ * 显示34个字符
+ */
+var formatText34 = function (str) {
+    if (str) {
+        if (str.length > 34) {
+            return str.substring(0, 34) + '...';
+        } else {
+            return str
+        }
+    }
+};
+/**
+ * '待支付', '1',  'STATUS'
+'待发货', '2',  'STATUS'
+'已取消', '3',  'STATUS'
+'已关闭', '4',  'STATUS'
+'待确认', '5',  'STATUS'
+'待评价', '6',  'STATUS'
+'完成', '7',  'STATUS'
+'已退款', '13',  'STATUS'
+ * @param num order状态数据字典
+ */
+var orderStuts = function (str) {
+    var num = parseInt(str);
+    switch (num) {
+        case 1:
+            return '待支付';
+            break;
+        case 2:
+            return '待发货';
+            break;
+        case 3:
+            return '已取消';
+            break;
+        case 4:
+            return '已关闭';
+            break;
+        case 5:
+            return '待确认';
+            break;
+        case 6:
+            return '待评价';
+            break;
+        case 7:
+            return '已完成';
+            break;
+        case 13:
+            return '商品库存不足';
+            break;
+    }
+}
+/**
+ * 
+ * @param str '未退款', '0',  'REFUND_STATUS',
+'退款中', '1',  'REFUND_STATUS',
+'已退款', '2',  'REFUND_STATUS',
+'已退款', '3',  'REFUND_STATUS',
+ */
+var refundStatus = function (str) {
+    var num = parseInt(str);
+    switch (num) {
+        case 0:
+            return '待审核';
+            break;
+        case 1:
+            return '拒绝退款';
+            break;
+        case 2:
+            return '拒绝退货';
+            break;
+        case 3:
+            return '待退货';
+            break;
+        case 4:
+            return '待卖家验货';
+            break;
+        case 5:
+            return '待收货';
+            break;
+        case 6:
+            return '退款中';
+            break;
+        case 7:
+            return '退款成功';
+            break;
+        case 8:
+            return '补发成功';
+            break;
+        case 9:
+            return '换货成功';
+            break;
+        case 10:
+            return '已撤销';
+            break;
+        case 11:
+            return '三方退款失败';
+            break;
+        case 12:
+            return '拒绝补发';
+            break;
+    }
+}
+
+/**
+ * 退款的状态：
+0:待审核
+1:拒绝退款
+2:拒绝受理
+3:待退货
+4：待买家验货
+5:待收获
+6：退款中
+7:退款成功
+8:补发成功
+9：换货成功
+10:已撤销
+11:三方退款失败
+ */
+
+/**
+ * 
+USER_UI_010811102     等待商家退款
+USER_UI_010811103     商家同意退款
+USER_UI_010811105     买家已撤销
+USER_UI_010811104     商家已拒绝
+
+USER_UI_010811202     等待商品补发
+USER_UI_010811203     商家同意退款（超时自动退款）
+USER_UI_010811204     买家已经撤销
+USER_UI_010811205     等待买家签收
+USER_UI_010811206     买家已经签收
+USER_UI_010811207     商家拒绝补发
+
+USER_UI_010811302     等待商家退款退货
+USER_UI_010811303     商家同意退款
+USER_UI_010811304     买家已撤销
+USER_UI_010811305     等待买家发货
+USER_UI_010811306     等待商家验收
+USER_UI_010811307     商家同意退款退货
+USER_UI_010811308     商家拒绝退货
+ */
+
+var taskId = function (str) {
+    console.log(str)
+    switch (str) {
+        case 'USER_UI_010811102':
+        case 'USER_UI_010811202':
+        case 'USER_UI_010811302':
+            return '等待商家审核';
+            break;
+        case 'USER_UI_010811103':
+        case 'USER_UI_010811203':
+        case 'USER_UI_010811303':
+            return '商家同意退款';
+            break;
+        case 'USER_UI_010811204':
+        case 'USER_UI_010811304':
+        case 'USER_UI_010811105':
+            return '买家已撤销';
+            break;
+        case 'USER_UI_010811104':
+        case 'USER_UI_010811309':
+            return '商家已拒绝';
+            break;
+        case 'USER_UI_010811205':
+            return '等待买家签收';
+            break;
+        case 'USER_UI_010811305':
+            return '等待买家发货';
+            break;
+        case 'USER_UI_010811206':
+            return '买家已经签收';
+            break;
+        case 'USER_UI_010811207':
+            return '商家拒绝补发';
+            break;
+        case 'USER_UI_010811306':
+            return '等待商家验收';
+            break;
+        case 'USER_UI_010811307':
+            return '商家同意退款退货';
+            break;
+        case 'USER_UI_010811308':
+            return '商家拒绝退款';
+            break;
+        case 'success_refund_amount':
+            return '退款成功';
+            break;
+    }
+}
+
+var refundClass = function (str) {
+    var num = parseInt(str);
+    switch (num) {
+        case 0:
+            return '仅退款';
+            break;
+        case 1:
+            return '退货';
+            break;
+        case 2:
+            return '退货';
+            break;
+        case 3:
+            return '补货';
+            break;
+    }
+}
+
+module.exports = {
+    formatTime: DateFr.getDate,
+    getDateQ: DateFr.getDateQ,
+    getDateH: DateFr.getDateH,
+    formatNumber: formatNumber,
+    Float2: Float2,
+    formatPhoneNum: formatPhoneNum,
+    formatText28: formatText28,
+    formatText34: formatText34,
+    orderStuts: orderStuts,
+    refundStatus: refundStatus,
+    refundClass: refundClass,
+    taskId: taskId
+}
+  /**
+   * REFUND_STATUS 未退款    0   UNREFUND
+REFUND_STATUS 退款中    1   REFUNDING
+REFUND_STATUS 已退款    2   REFUND
+REFUND_STATUS 退款失败    3   REFUND FAILED
+STATUS   待支付    1   UNPAID
+STATUS   待发货    2   NOT YET SHIPPED
+STATUS   买家关单    3   CLOSED ORDER BY BUYER
+STATUS   卖家关单    4   CLOSED ORDER BY SELLER
+STATUS   待确认    5   UNCONFIRMED
+STATUS   待评价    6   NOT APPRAISED
+STATUS   完成     7   END
+STATUS   商品库存不足   13   LOW STOCKS
+SOURCE_TYPE  平台商品购买   1   PLATFORM GOODS
+SOURCE_TYPE  代理商店铺购买  2   AGENT GOODS
+SOURCE_TYPE  有栗商品购买   3   YOULI GOODS
+ABROAD_FLAG  境外     2   OUTSIDE A COUNTRY
+ABROAD_FLAG  境内     1   CHURCHYARD
+checkStatus = 1  校验成功
+checkStatus = 2  库存不足
+checkStatus = 3  商品过期
+//    */

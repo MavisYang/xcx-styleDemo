@@ -1,0 +1,13 @@
+<view class="ms-container">
+    <view class="userInfo">
+        <button wx:if="{{}}">
+        获取头像昵称
+        </button>
+        <block wx:else="{{items}}">
+
+            <text class="userNickName">{{}}</text>
+        </block>
+        
+    
+    </view>
+</view>

@@ -1,0 +1,64 @@
+<!--pages/user/refund/refundDetail/refundDetail.wxml-->
+<wxs src='../../../utils/filter.wxs' module='Filter'></wxs>
+<view class="refunDetail">
+    <view class="refunDetailHeader bgColor border-top">
+        <view class="refunDetailHeaderContent">
+            <view class="refunDetailHeaderContentImgBox">
+                <image src='{{goodsDetail.skuPic}}' class="refunDetailHeaderContentImg"></image>
+            </view>
+            <view class="refunDetailHeaderContentText">
+                <text class="refunDetailHeaderContentTextAdr">{{goodsDetail.skuName}}</text>
+                <text class="refunDetailHeaderContentTextNum">¥{{Filter.Float2(goodsDetail.unitPrice)}}</text>
+                <view class="refunDetailHeaderContentTextMessage">
+                    <text class="refunDetailHeaderContentTextMessageNum">
+                        <text wx:for='{{goodsDetail.attrs}}' wx:key='index'>{{item.value}} </text>
+                    </text>
+                    <view class="displayflex">
+                        <text class="rotate45">+</text>{{goodsDetail.quantity}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="bgColor TimelineBOX lineMain">
+        <view class="TimelineMessages">
+            <text class="border-bottom">售后进度</text>
+        </view>
+        <view class="Timeline">
+            <view class="Timeline-content">
+                <view wx:for='{{createData}}' wx:key='index' class="{{index ==0?'boxItem color4':'boxItem color9'}}">
+                    <view class="boxItemDate">
+                        <view>{{Filter.getDateQ(item.createDate)}}</view>
+                        <view class="time">{{Filter.getDateH(item.createDate)}}</view>
+                    </view>
+                    <text class="{{index == 0 ? 'boxItemDutton once' : 'boxItemDutton nullce'}}"></text>
+                    <view class="boxItemText">{{Filter.taskId(item.taskDefinitionKey)}}</view>
+                    <view style="color:#9a9a9a">{{item.content}}</view>
+                    <view wx:if='{{item.taskDefinitionKey == "USER_UI_010811205" && mainData.taskDefinitionKey == "USER_UI_010811205"}}'
+                        class="myOrderItemBtnBoxColorf45 editNumber" bindtap='singUp'
+                        data-taskid='{{mainData.taskId}}' data-pid='{{mainData.processInsId}}'>确认签收</view>
+                    <view class="myOrderItemBtnBoxColorf45 editNumber" bindtap='skipIptNum' data-taskid='{{mainData.taskId}}'
+                        data-pid='{{mainData.processInsId}}' data-orderid='{{mainData.applyDetail.refundOrderId}}'
+                        wx:if='{{item.taskDefinitionKey == "USER_UI_010811305" && (!expressInfo || !expressInfo.length)}}'>
+                        填写单号</view>
+
+                </view>
+                <view class="{{createData.length == 0 ?'boxItem color4':'boxItem color9'}}">
+                    <view class="boxItemDate">
+                        <view>{{Filter.getDateQ(dtData.createDate)}}</view>
+                        <view class="time">{{Filter.getDateH(dtData.createDate)}}</view>
+                    </view>
+                    <text class="{{createData.length == 0 ?'boxItemDutton once':'boxItemDutton nullce '}}"></text>
+                    <view class="boxItemText">已提交</view>
+                    <view class="boxItemText">退款编号：{{dtData.refundOrderNo}}</view>
+                    <view class="boxItemText">退款类型：{{Filter.refundClass(dtData.refundType)}}</view>
+                    <view class="boxItemText">退款金额：¥{{Filter.Float2(dtData.orgRefundAmount)}}</view>
+                    <view class="boxItemText">退款原因：{{dtData.refundReasonDesc}}</view>
+                    <view class="boxItemText">申请时间：{{Filter.formatTime(dtData.createDate)}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="refunDetailBtnBox {{btnState?'backgroundC0C0C0':'bgColorRed'}}" bindtap="cancelRefund"
+        data-taskid='{{mainData.taskId}}' data-processinsid='{{mainData.processInsId}}'
+        wx:if='{{cancleStatus=="USER_UI_010811102" || cancleStatus=="USER_UI_010811202" || cancleStatus=="USER_UI_010811302"}}'>取消退款</view>
+</view>

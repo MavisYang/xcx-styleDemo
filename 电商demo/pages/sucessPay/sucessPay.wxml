@@ -1,0 +1,15 @@
+<!--pages/find/sucessPay/sucessPay.wxml-->
+<wxs src='../../utils/filter.wxs' module='Filter'></wxs>
+
+<view class='sucessPay'>
+    <view class='sucessPayHeader  bgColor border-top'>
+        <view class="sucessPayHeaderImg">
+            <span class="iconBackground successIocn"></span>
+            <text class='sucessPayHeaderTitle'>付款成功</text>
+        </view>
+        <view class='sucessPayHeaderContent'>
+            <button class="left" bindtap='goOrder'>查看订单</button>
+            <button class="right" bindtap='goUser'>个人中心</button>
+        </view>
+    </view>
+</view>

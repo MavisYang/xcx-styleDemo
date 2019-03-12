@@ -1,0 +1,91 @@
+<!--pages/find/pay/pay.wxml-->
+<wxs src='../../utils/filter.wxs' module='Filter'></wxs>
+<view class='payBox'>
+    <view class='payaAdr bgColor border-top'>
+        <image class="payaAdrimg" src='/images/line.png ' />
+        <view class=' addAdr ' wx:if='{{adrStyle}}' bindtap="editAddress">
+            <!-- <span class='addAdrimg iconBackground'></span> -->
+            <image class="addAdrimg" src='/images/icon_address.png' />
+            <text class='addAdrtext colorA1'>添加收货地址</text>
+            <span class=' iconBackground rightArrow'></span>
+        </view>
+        <view class='selectAdr ' wx:else bindtap="editAddress">
+            <!-- <image class="addAdrimg" src='/images/icon_address.png' /> -->
+            <view class='addAdrtext'>
+                <view class="marginBottom20">
+                    <text>{{userName}}</text>
+                    <text>{{telNumber}}</text>
+                </view>
+                <text class="colorA1">{{provinceName}} {{cityName}} {{countyName}}{{detailInfo}}</text>
+            </view>
+            <span class=' iconBackground rightArrow'></span>
+        </view>
+
+    </view>
+    <view class="IDCard border-bottom" bindtap='goEditIdCard' wx:if='{{isAbroadFlag != 0}}'>
+        <text>身份证</text>
+        <text class="middle" wx:if='{{IdCard}}'>{{IdCard}} {{IdName}}</text>
+        <text class="middle text colorA1" wx:else>（境外商品必填）必须与收件人姓名一致</text>
+        <span class=' iconBackground rightArrow'></span>
+    </view>
+    <scroll-view scroll-y class='goodsMessage bgColor  border-bottom '>
+        <view wx:for="{{goodsItem.orderSimpleInfo}}" wx:key="unique" class="paddingTop30">
+            <view class='goodsMessageBox border-bottom'>
+                <view class="colorRed jingwai" wx:if='{{isAbroadFlag != 0}}'>境外</view>
+                <image src='{{item.goodsSkuInfos[0].skuPic}} ' />
+                <view class='goodsMessageContent'>
+                    <view>
+                        <text>{{item.goodsSkuInfos[0].skuName}}</text>
+                    </view>
+                    <view>
+                        <view>
+                            <text class="colorB5ADAD" wx:for='{{item.goodsSkuInfos[0].attrs}}' wx:key='index'>
+                                <text>{{item.value}}</text>
+                            </text>
+                        </view>
+                        <view class="displayflex colorA1">
+                            <text class="rotate45">+</text>{{item.goodsSkuInfos[0].quantity}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class='shipping border-bottom '>
+                <text>买家留言：</text>
+                <view>
+                    <input placeholder="填写对本次交易的说明" placeholder-class='colorA1' value="{{comments}}"
+                        bindinput='changeComments' />
+                </view>
+            </view>
+            <view class='shipping border-bottom '>
+                <text>配送运费：</text>
+                <view>
+                    <text class="payFooternum">
+                        <text>¥</text>
+                        <text class="fontSize40">{{Filter.Float2(item.billTicketInfo.expressPrice)}}</text>
+                    </text>
+                </view>
+            </view>
+            <view class='sumMoney border-bottom'>
+                <text>小计</text>
+                <text class="payFooternum">
+                    <text>¥</text>
+                    <text class="fontSize40">{{Filter.Float2(item.billTicketInfo.productPrice)}}</text>
+                </text>
+            </view>
+        </view>
+        <view class="ad_popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
+    </scroll-view>
+    <view class='payFooterBtn bgColor border-top '>
+        <view>
+            <text>合计：</text>
+            <text wx:if="{{onlyGoods}}" class="payFooternum colorRed">
+                <text class="colorRed">¥</text>
+                <text class="fontSize40 colorRed">{{Filter.Float2(goodsItem.totalBillInfo.realChargePrice?goodsItem.totalBillInfo.realChargePrice:goodsItem.totalBillInfo.totalPrice)}}</text>
+            </text>
+            <text class="payFooternum colorRed" wx:else>
+                <text class="colorRed">¥</text>
+                <text class="fontSize40 colorRed">{{Filter.Float2(goodsItem.totalBillInfo.realChargePrice?goodsItem.totalBillInfo.realChargePrice:goodsItem.totalBillInfo.totalPrice)}}</text>
+            </text>
+        </view>
+        <view bindtap='paySubmitBox' class="payFooterEnter bgColorRed">微信支付</view>
+    </view>
+</view>

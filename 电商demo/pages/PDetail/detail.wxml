@@ -1,0 +1,110 @@
+<!--pages/find/detail/detail.wxml-->
+<wxs src="./../../utils/filter.wxs" module="Filter" />
+<import src="../../wxParse/wxParse.wxml" />
+<view class="homeBox">
+    <scroll-view scroll-y='{{!scrollState}}' class="homeScrollBox" bindscrolltolower="showScrollTop"
+        scroll-top="{{scrollTop}}" bindscrolltoupper='hideScroll' scroll-with-animation='{{true}}'>
+        <view class='productDetailBox'>
+            <view class='productContent'>
+                <view class='productContentImgBanner border-bottom'>
+                    <view class="commodity">
+                        <!-- <image src="{{productItem.coverPhoto}}" mode="aspectFill" /> -->
+                        <swiper class="swiper" interval="4000" duration="1000" indicator-dots='true' indicator-color='#b5bdc6'
+                            indicator-active-color='#F45C43'>
+                            <block wx:for="{{productMedias}}" wx:for-index="index" wx:key="unique">
+                                <swiper-item class="slide-image" wx:if='{{item.type!=3}}'>
+                                    <video src="{{item.path}}" objectFit="fill" wx:if='{{item.type == 0}}' />
+                                    <image src="{{item.path}}" mode="aspectFill" wx:else />
+                                </swiper-item>
+                            </block>
+                        </swiper>
+                    </view>
+                </view>
+                <view class='productPriceBox border-bottom bgColor'>
+                    <text class='productTitle'>{{Filter.formatText34(productItem.name)}}</text>
+                    <view class='productPriceContent'>
+                        <view class='productPriceText'>
+                            <view class='productPrice colorRed height70'>
+                                <text>¥</text>
+                                <text class='productPriceText2'>{{Filter.Float2(productItem.retailPrice)}}</text>
+                            </view>
+                            <view class="GoodLine"></view>
+                        </view>
+                        <view class='productPriceText3 flexEnd'>
+                            <text>快递 ¥{{Filter.Float2(productItem.defaultExpressFee)}}</text>
+                            <text>销量：{{productItem.totalSaledQuantity}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class='productSynopsis bgColor'>
+                    <text class='productSynopsisTitle'>商品详情</text>
+                    <view class="wxParse">
+                        <template is="wxParse" data="{{wxParseData:daset.nodes}}" />
+                    </view>
+                </view>
+            </view>
+            <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+            <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+                <view class='buyImg border-bottom'>
+                    <image src='{{productDeatil.img?productDeatil.img:HomeThisImg}}' class="buyImgLogo"
+                    />
+                    <view>
+                        <text class="colorRed">
+                            <text>¥</text>
+                            <text class="dr">{{Filter.Float2(productDeatil.price)}}</text>
+                        </text>
+                        <text class='productItemText'>库存：{{productDeatil.remainingQuantity}}</text>
+                        <text class='productItemText'>已选择：{{productDeatil.valueSku}}</text>
+                    </view>
+                    <span class='buyClose iconBackground' bindtap='hideModal'></span>
+                </view>
+                <scroll-view scroll-y='{{scrollState}}' style="height:500rpx">
+                    <view class="padding40">
+                        <view class="buyStyle" wx:for="{{attrValueList}}" wx:for-item="attrValueObj" wx:for-index="attrIndex"
+                            wx:key='attrIndex'>
+                            <!--属性名-->
+                            <text>{{attrValueObj.attrKey}}</text>
+                            <!--属性值-->
+                            <view class=" marginBottom15rpx buyRadioGroup">
+                                <!--每个属性值-->
+                                <view wx:for="{{attrValueObj.attrValues}}" wx:for-item="value" wx:for-index="valueIndex"
+                                    wx:key='valueIndex' class="buyRadio {{attrIndex==firstIndex || attrValueObj.attrValueStatus[valueIndex]?(value==attrValueObj.selectedValue?'checkedlabel':''):'buyNumRightStyle'}}"
+                                    bindtap="selectAttrValue" data-status="{{attrValueObj.attrValueStatus[valueIndex]}}"
+                                    data-value="{{value}}" data-key="{{attrValueObj.attrKey}}"
+                                    data-index="{{attrIndex}}" data-selectedvalue="{{attrValueObj.selectedValue}}">{{value}}</view>
+                            </view>
+                        </view>
+                        <!-- </view> -->
+                    </view>
+                    <view class='buyNum'>
+                        <view class='buyNumLeft'>
+                            <text>购买数量：</text>
+                        </view>
+                        <view class='buyNumRight'>
+                            <text bindtap='{{buyNumSelf!=1?"buyNumSelfMinus":""}}' class="{{buyNumSelf==1?'buyNumRightStyle':''}}">-</text>
+                            <text>{{buyNumSelf}}</text>
+                            <text bindtap='buyNumSelfAdd'>+</text>
+                        </view>
+                    </view>
+                </scroll-view>
+                <view class='buyfooterBtn'>
+                    <view bindtap='addCar' data-id='{{productItem.id}}' wx:if='{{shoppingModal}}' class='sure'>确定</view>
+                    <view bindtap='orderNew' wx:else class='sure'>确定</view>
+                </view>
+                <view class="ad_popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
+            </view>
+        </view>
+        <view class="upToTopBox" bindtap='scrollTop' wx:if="{{showScrollTop}}">
+            <view class=" upToTop"></view>
+        </view>
+    </scroll-view>
+    <view wx:if="{{changeBtn}}">
+        <view class='detailBottomBtn maskButton'>
+            <button class='detailBottomBtnitemBuy' open-type="getUserInfo" bindgetuserinfo="getUserInfo">立即购买</button>
+        </view>
+    </view>
+    <view class='detailBottomBtn' wx:else>
+        <view class="{{loginState?'detailBottomBtnitemBuy onLoginBuy':'detailBottomBtnitemBuy'}}"
+            catchtap='toBuyModal'>立即购买</view>
+    </view>
+</view>

@@ -1,0 +1,82 @@
+<!--pages/user/refund/iptMessage/iptMessage.wxml-->
+<wxs src='../../../utils/filter.wxs' module='Filter'></wxs>
+<view class="iptMessage">
+    <view class="iptMessageHeader bgColor border-top">
+        <view class="iptMessageHeaderContent">
+            <view class="iptMessageHeaderContentImgBox" bindtap='lookImg'>
+                <image src='{{orderDetail.items[0].skuPic}}' class="iptMessageHeaderContentImg"></image>
+            </view>
+            <view class="iptMessageHeaderContentText">
+                <text class="iptMessageHeaderContentTextAdr">{{orderDetail.items[0].skuName}}</text>
+                <text class="iptMessageHeaderContentTextNum">¥{{Filter.Float2(orderDetail.items[0].retailPrice)}}</text>
+                <view class="iptMessageHeaderContentTextMessage">
+                    <text class="iptMessageHeaderContentTextMessageNum">
+                        <block wx:for='{{orderDetail.items[0].attrs}}' wx:key='index'>{{item.value}} </block>
+                    </text>
+                    <view class="displayflex">
+                        <text class="rotate45">+</text>{{orderDetail.items[0].quantity}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="iptMessageContent bgColor">
+        <view class="iptMessagePickerBox" wx:if='{{StateArrayStatus}}'>
+            <picker class="iptMessagePicker" catchchange='catchchangeState' value='{{StateIndex}}'
+                range='{{StateArray}}'>
+                <input type="text" disabled class="iptMessagePickerIpt" placeholder="请选择货物状态" value="{{StateValue}}"
+                    placeholder-class="changePickerClass" />
+                <span class="iptMessagePickerIcon iconBackground"></span>
+            </picker>
+        </view>
+        <view class="iptMessagePickerBox">
+            <picker class="iptMessagePicker" catchchange='catchchangeReason' value='{{ReasonIndex}}'
+                range='{{ReasonArray}}'>
+                <input type="text" disabled class="iptMessagePickerIpt" placeholder="请选择售后原因" value="{{ReasonValue}}"
+                    placeholder-class="changePickerClass" />
+                <span class="iptMessagePickerIcon iconBackground"></span>
+            </picker>
+        </view>
+        <view class="iptMessagePickerBox" wx:if='{{StateArrayStatus != 2}}'>
+            <input class="iptMessagePickerIpt iptMessagePickerIpts" placeholder="请输入退款金额（含运费,最多可退{{MaxData}}）"
+                bindfocus='foucusrefundeMoneny' bindblur='configrefundMoney' bindinput='changerefundMoney'
+                value="{{refundMoney}}" placeholder-class="changePickerClass" />
+        </view>
+        <view class="iptMessagePickerBox">
+            <input maxlength='11' type="number" class="iptMessagePickerIpt" placeholder="联系方式"
+                bindinput='changerefundPhoneNum' value="{{refundPhoneNum}}" placeholder-class="changePickerClass"
+            />
+        </view>
+        <view class="iptMessagePickerBox">
+            <picker class="iptMessagePicker" catchchange='catchchangeService' value='{{serviceIndex}}'
+                    range='{{serviceArray}}'>
+                <input type="text" class="iptMessagePickerIpt" disabled placeholder="请选择客服是否介入" value="{{serviceValue}}"
+                       placeholder-class="changePickerClass" />
+                <span class="iptMessagePickerIcon iconBackground"></span>
+            </picker>
+        </view>
+        <view class="iptMessagePickerBoxText">
+            <textarea placeholder='请输入退款说明200字以内' placeholder-class="changePickerClass" value='{{ReasonsValue}}'
+                bindinput='reasonsIpt' maxlength='200' />
+        </view>
+
+        <view class="iptMessageUploadCredentials">
+            <text class="iptMessageUploadCredentialsTitle">上传凭证</text>
+            <view class="iptMessageUploadCredentialsItemImg">
+                <view class="lineSolid" wx:for='{{ImgArray}}' wx:key='index'>
+                    <span data-value='{{index}}' class="iptMessageUploadCredentialsItemImgIcon iconBackground"
+                        catchtap='delImg'></span>
+                    <image src='{{item.url}}' class="iptMessageUploadCredentialsItemImgUrl"></image>
+                </view>
+                <view class="iptMessageUploadCredentialsItem lineDotted" wx:if='{{ImgArray.length<5}}' bindtap='addImg'>
+                    <span class="ptMessageUploadCredentialsItemIcon iconBackground"></span>
+                    <text class="ptMessageUploadCredentialsItemText">上传凭证</text>
+                    <text class="ptMessageUploadCredentialsItemText">可上传{{5-ImgArray.length}}张</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="iptMessageBtn {{iptMessageBtnState?'bgColorRed':'colorIptMessage'}}"
+        bindtap='submitRefund'>提交</view>
+    <view class="ad_popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
+</view>

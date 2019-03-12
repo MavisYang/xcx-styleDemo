@@ -1,0 +1,122 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.1",
+	"appid": "wx655b79f74ee85585",
+	"projectname": "youliWeex",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 10,
+			"list": [
+				{
+					"id": 0,
+					"name": "order",
+					"pathName": "pages/order/index",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "detail",
+					"pathName": "pages/PDetail/detail",
+					"query": "scene=IIIO"
+				},
+				{
+					"id": 2,
+					"name": "pay",
+					"pathName": "pages/pay/pay",
+					"query": "goods=[{\"productId\": \"123456789\",     \"quantity\": 2,     \"skuId\": \"12357778\"}]"
+				},
+				{
+					"id": -1,
+					"name": "adr",
+					"pathName": "pages/adr/index",
+					"query": ""
+				},
+				{
+					"id": 4,
+					"name": "orderDetail",
+					"pathName": "pages/orderDetail/orderDetail",
+					"query": "orderNo=14fa148e-fa52-402c-8da2-093ca4ee3ecb&purchaseInsId=ea97bef3-1615-4888-b3e5-3b61d58b581b"
+				},
+				{
+					"id": 5,
+					"name": "logistics",
+					"pathName": "pages/logistics/logistics",
+					"query": "orderId=656fe1f2-a07a-4341-9d0d-e487ecfc1f3f"
+				},
+				{
+					"id": 6,
+					"name": "paySuccess",
+					"pathName": "pages/sucessPay/sucessPay",
+					"query": "status=1"
+				},
+				{
+					"id": -1,
+					"name": "refund",
+					"pathName": "pages/refund/refund",
+					"query": ""
+				},
+				{
+					"id": 8,
+					"name": "iptMessage",
+					"pathName": "pages/refund/iptMessage/iptMessage",
+					"query": "refundStutas=2"
+				},
+				{
+					"id": -1,
+					"name": "idcard",
+					"pathName": "pages/IdCard/IdCard",
+					"query": ""
+				},
+				{
+					"id": 10,
+					"name": "Index",
+					"pathName": "pages/index/index",
+					"query": "goodsId=c02c6e5c-f9d5-4285-b626-43140bded4e2"
+				},
+				{
+					"id": -1,
+					"name": "dnum",
+					"pathName": "pages/refund/iptNum/iptNum",
+					"query": ""
+				},
+				{
+					"id": 12,
+					"name": "store",
+					"pathName": "pages/store/store",
+					"query": "tenantId=IIII"
+				},
+				{
+					"id": -1,
+					"name": "mavis",
+					"pathName": "pages/aMavis/mavis",
+					"query": ""
+				}
+			]
+		}
+	}
+}

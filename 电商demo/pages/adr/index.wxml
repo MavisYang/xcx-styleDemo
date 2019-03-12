@@ -1,0 +1,51 @@
+<wxs src="./../../utils/filter.wxs" module="filter" />
+<view class="adrEdit" wx:if='{{adrEdit}}'>
+    <view class="editIptBox">
+        <input class="border-bottom" bindinput='changeUserName' placeholder="收件人" placeholder-class='colorA1'
+            type="text" value="{{userName}}" />
+        <input class="border-bottom" bindinput='changeUserNum' placeholder="联系电话" placeholder-class='colorA1'
+            type='number' value="{{userPhoneNum}}" />
+        <picker class="border-bottom" mode="region" bindchange="bindUserAdrChange" value="{{userAdr}}">
+            <view class="picker">
+                {{userAdr[0]}}，{{userAdr[1]}}，{{userAdr[2]}}
+            </view>
+        </picker>
+        <input placeholder="详细地址，如街道、楼牌号等" bindinput='changeAdr' placeholder-class='colorA1'
+            type='number' value="{{adrDetail}}" />
+    </view>
+    <vew class="middle">
+        <view>设置为默认地址</view>
+        <switch value='{{primaryFlag}}' bindchange="switch2Change" />
+    </vew>
+    <view class="btn">
+        <button class="submit bgColorRed" bindtap='submit' data-adrid='{{adrId}}'>保存</button>
+        <button class="return" bindtap='goBack'>返回</button>
+
+    </view>
+</view>
+<view class="adrList" wx:else>
+    <!-- <image class="payaAdrimg" src='/images/line.png ' /> -->
+    <scroll-view scroll-y class="contentList">
+        <view class="listBox" bindtouchstart="touchS">
+            <view class="listItem" wx:for='{{adrList}}' wx:key='index' data-id='{{item.id}}'
+                bindtap='operation'>
+                <view class="content" bindtouchmove="touchM" bindtouchend="touchE" style='{{item.txtStyle}}'
+                    data-index='{{index}}'>
+                    <view class="left">
+                        <view class="header">
+                            <text class="name">{{item.contactor}}</text>
+                            <text class="num">{{filter.formatPhoneNum(item.contactTel)}}</text>
+                            <text class="defalut" wx:if="{{item.primaryFlag}}">默认</text>
+                        </view>
+                        <view class="footer">{{item.provinceName}}{{item.cityName}}{{item.countyName}}{{item.detailAddr}}</view>
+                    </view>
+                    <image src='/images/icon_edit@2x.png' class="right" />
+                </view>
+                <view class="innerdelBox " catchtap='delProduction' data-adrid='{{item.id}}'>删除</view>
+            </view>
+        </view>
+    </scroll-view>
+    <view class="btn">
+        <view class="addAdList" bindtap='addAdItem'>+ 添加收件地址</view>
+    </view>
+</view>

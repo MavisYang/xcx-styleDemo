@@ -1,0 +1,62 @@
+<!--pages/store/store.wxml-->
+<wxs src="./../../utils/filter.wxs" module="filter" />
+<scroll-view class="storeMain" scroll-y bindscrolltolower='loadMoreList' lower-threshold='1'>
+    <view class="storeHeader">
+        <image class="headerbG" src='/images/pic_me_profilebg@2x.png' />
+        <view class="headerContent">
+            <view class="box">
+                <image class="left" src='{{userMessage.storeLogo}}' />
+                <view class="right">
+                    <text class="name">
+                        <text>{{userMessage.storeName}}</text>
+                        <!-- <text>的店铺</text> -->
+                    </text>
+                    <text class="des">
+                        <text>{{userMessage.storeDescription}}</text>
+                    </text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- <view class="storeContent">
+        <view class="storeContentTitle">
+            <text class="line"></text>
+            <text class="text">今日特卖</text>
+            <text class="line"></text>
+        </view>
+        <swiper class="swiper">
+            <block wx:for="{{GoodSuggesst.rowDatas}}" wx:key='index'>
+                <swiper-item class="swiperItem" data-id='{{item.id}}' catchtap='goToD'>
+                    <image src="{{item.coverPhoto}}" class="slideImage" />
+                    <view class="slideTitle">{{item.name}}</view>
+                    <view class="slidePrice">
+                        <text>￥</text>
+                        <text>{{filter.Float2(item.retailPrice)}}</text>
+                    </view>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view> -->
+    <view class="storeFooter">
+        <view class="storeContentTitle">
+            <text class="line"></text>
+            <text class="text">店铺推荐</text>
+            <text class="line"></text>
+        </view>
+        <view class="listMain">
+            <view class="list" wx:for='{{GoodList.rowDatas}}' wx:key='index' data-id='{{item.id}}'
+                catchtap='goToD'>
+                <image class="img" src='{{item.coverPhoto}}' />
+                <view class="title">
+                    <text class="jinkou" wx:if='{{item.abroadFlag}}'>进口</text>
+                    <text>{{item.name}}</text>
+                </view>
+                <view class="price">
+                    <text>￥</text>
+                    <text>{{filter.Float2(item.retailPrice)}}</text>
+                </view>
+            </view>
+        </view>
+
+    </view>
+</scroll-view>

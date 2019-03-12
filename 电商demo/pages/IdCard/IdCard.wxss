@@ -1,0 +1,106 @@
+/* pages/IdCard/IdCard.wxss */
+
+.idcard {
+    height: 100%;
+    background: #f6f6f6;
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    color: #444444;
+    letter-spacing: 0;
+}
+
+.idcard .header {
+    width: 100%;
+    background: #fff;
+    padding: 0 30rpx;
+    padding-bottom: 50rpx;
+    margin-bottom: 50rpx;
+    box-sizing: border-box;
+}
+
+.idcard .header .item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20rpx 0;
+}
+
+.idcard .header .item text {
+    width: 25%;
+}
+
+.idcard .header .item input {
+    flex: 1;
+}
+
+.idcard .content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.idcard .content .imgitem {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.idcard .header .itemImg .title {
+    padding: 20rpx 0;
+}
+
+.idcard .content .imgitem .imgOneImg {
+    position: relative;
+    height: 220rpx;
+    width: 100%;
+    margin-bottom: 20rpx;
+}
+
+.idcard .content .imgitem .imgTwoIng {
+    height: 220rpx;
+    width: 100%;
+    margin-bottom: 20rpx;
+}
+
+.idcard .content .imgitem .imgTwoIng>image {
+    width: 100%;
+    height: 220rpx;
+}
+
+.idcard .content .imgitem .imgOneImg .top {
+    position: absolute;
+    width: 100rpx;
+    height: 100rpx;
+    z-index: 22;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+
+.idcard .content .imgitem .imgOneImg .bottom {
+    position: absolute;
+    width: 100%;
+    height: 220rpx;
+}
+
+.idcard .imgOneText {
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    color: #A1A1A1;
+}
+
+.idcard .footerBtn {
+    padding: 0 60rpx;
+}
+
+.idcard .footerBtn .btnClass {
+    height: 100rpx;
+    line-height: 100rpx;
+    background-image: linear-gradient(133deg, #F95639 0%, #F03340 50%, #F03340 100%);
+    border-radius: 100rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 30rpx;
+    color: #FFFFFF;
+}

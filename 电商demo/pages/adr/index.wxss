@@ -1,0 +1,162 @@
+/* pages/adr/index.wxss */
+
+.adrEdit {
+    background: #e8e8e8;
+    height: 100%;
+    width: 100%;
+}
+
+.adrEdit .editIptBox {
+    background: #fff;
+    padding: 0 40rpx;
+    margin-bottom: 40rpx;
+}
+
+.adrEdit .editIptBox picker,
+.adrEdit .editIptBox input {
+    padding: 40rpx 0;
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    color: #444444;
+}
+
+.adrEdit .middle {
+    background: #fff;
+    display: flex;
+    padding: 40rpx;
+    align-items: center;
+    justify-content: space-between;
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    color: #444444;
+    margin-bottom: 40rpx;
+}
+
+.adrEdit .btn {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column
+}
+
+.adrEdit .btn button {
+    border-radius: 100rpx;
+    margin-bottom: 30rpx;
+    width: 670rpx;
+    border: none;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 30rpx;
+    box-sizing: border-box;
+}
+
+.adrEdit .btn .return {
+    border: 1px solid #a1a1a1;
+    background: #e8e8e8;
+    color: #a1a1a1
+}
+
+.adrList {
+    background: #fff;
+    height: 100%;
+}
+
+.adrList .contentList {
+    height: calc( 100% - 140rpx);
+}
+
+.adrList .btn {
+    height: 140rpx;
+    padding: 0 60rpx;
+}
+
+.adrList .btn .addAdList {
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align: center;
+    box-sizing: border-box;
+    border: 2rpx solid #f03340;
+    border-radius: 100rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 30rpx;
+    color: #f03340;
+}
+
+.adrList .contentList .listBox .listItem {
+    position: relative;
+    height: 176rpx;
+    /* overflow: hidden; */
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.adrList .contentList .listBox .listItem .content {
+    position: absolute;
+    display: flex;
+    /* padding: 0 40rpx;     */
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2rpx solid #e8e8e8;
+    padding: 40rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 30rpx;
+    color: #444444;
+    width: 100%;
+    height: 176rpx;
+    box-sizing: border-box;
+    z-index: 222;
+    background: #fff;
+}
+
+.adrList .contentList .listBox .listItem .right {
+    width: 36rpx;
+    height: 36rpx;
+    margin-left: 40rpx;
+}
+
+.adrList .contentList .listBox .listItem .left {
+    flex: 1;
+}
+
+.adrList .contentList .listBox .listItem .left .header {
+    margin-bottom: 10rpx;
+    display: flex;
+    align-items: center;
+}
+
+.adrList .contentList .listBox .listItem .left .footer {
+    color: #a1a1a1;
+    font-size: 26rpx;
+}
+
+.adrList .contentList .listBox .listItem .left .header .num,
+.adrList .contentList .listBox .listItem .left .header .name {
+    margin-right: 40rpx;
+}
+
+.adrList .contentList .listBox .listItem .defalut {
+    background: #FFFFFF;
+    border: 2rpx solid #ED2C42;
+    border-radius: 4rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 22rpx;
+    color: #F03340;
+    padding: 2rpx 4rpx;
+}
+
+.adrList .contentList .listBox .listItem .innerdelBox {
+    position: absolute;
+    top: 0;
+    background: #F45C43;
+    font-family: PingFangSC-Regular;
+    font-size: 30rpx;
+    color: #FFFFFF;
+    width: 120rpx;
+    right: 0;
+    text-align: center;
+    height: 176rpx;
+    line-height: 176rpx;
+    color: #fff;
+    box-sizing: border-box;
+    right: 0;
+}

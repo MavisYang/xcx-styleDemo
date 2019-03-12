@@ -1,0 +1,42 @@
+<view class="idcard border-top">
+    <view class="header">
+        <view class="item border-bottom">
+            <text>姓名</text>
+            <input placeholder="请输入姓名(需要与身份证一致)" value='{{IdName}}' bindinput="changeIdName"
+            />
+        </view>
+        <view class="item border-bottom">
+            <text>身份证号码</text>
+            <input placeholder="请输入身份证号码" value='{{IdNo}}' bindinput="changeIdNo" />
+        </view>
+        <view class="itemImg" wx:if='{{false}}'>
+            <view class="title">身份证照片</view>
+            <view class="content">
+                <view class="imgitem">
+                    <view class="imgOneImg" wx:if='{{!IdCardOne}}' bindtap='choseIdCardOne'>
+                        <image class="bottom" src='/images/pic_varify_idfront@2x.png' />
+                        <image class="top" src='/images/ic_varify_addid@2x.png' />
+                    </view>
+                    <view class="imgTwoIng" wx:else bindtap='choseIdCardOne'>
+                        <image class="showImg" src='{{IdCardOne}}' />
+                    </view>
+                    <view class="imgOneText">身份证正面照</view>
+                </view>
+                <view class="imgitem">
+                    <view class="imgOneImg" wx:if='{{!IdCardTwo}}' bindtap='choseIdCardTwo'>
+                        <image class="bottom" src='/images/pic_varify_idback@2x.png' />
+                        <image class="top" src='/images/ic_varify_addid@2x.png' />
+                    </view>
+                    <view class="imgTwoIng" wx:else bindtap='choseIdCardTwo'>
+                        <image class="showImg" src='{{IdCardTwo}}' />
+                    </view>
+                    <view class="imgOneText">身份证正面照</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="footerBtn">
+        <button class="btnClass" bindtap='submitIdCard'>确定</button>
+    </view>
+    <view class="ad_popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
+</view>

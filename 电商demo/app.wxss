@@ -1,0 +1,501 @@
+/**app.wxss**/
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 200rpx 0;
+    box-sizing: border-box;
+}
+
+.clearfix:after {
+    clear: both;
+    content: '.';
+    display: block;
+    line-height: 0;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.loginMask {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 4;
+}
+
+page {
+    width: 100%;
+    height: 100%;
+    background: #f3f3f3 !important
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.iconBackground {
+    background: url(https://cloud.gemii.cc/lizcloud/fs/noauth/media/5a6fd25f1e6d8a002703614f);
+    background-size: 1200rpx 1400rpx;
+}
+
+.border-top {
+    border-top: 1px solid #eee;
+}
+
+.payaAdrimg {
+    width: 100%;
+    display: block;
+    height: 8rpx !important;
+}
+
+.border-bottom {
+    border-bottom: 1rpx solid #eee;
+}
+
+.border-left {
+    border-left: 1px solid #eee;
+}
+
+.border-right {
+    border-right: 1px solid #eee;
+}
+
+.bgColor {
+    background: #fff;
+}
+
+.marginBottom100 {
+    margin-bottom: 120rpx;
+}
+
+.bgColorRed {
+    background: linear-gradient(163deg, #f95639, #f03340) !important;
+    color: #fff !important;
+}
+
+.bgRed {
+    background: #f03340 !important;
+}
+
+.textCenter {
+    text-align: center
+}
+
+.colorGray {
+    color: #444;
+}
+
+.colorA1 {
+    color: #a1a1a1 !important
+}
+
+.colorGrayness {
+    color: #B5B5B5;
+}
+
+.colorWhite {
+    color: #fff;
+}
+
+.colorRed {
+    color: #f03340 !important;
+}
+
+.paddingTop {
+    padding-top: 24rpx;
+}
+
+.displayFlex {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    /* border-top: 1px solid #ddd; */
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 30rpx;
+    margin-bottom: 20rpx;
+}
+
+.displayFlex text {
+    color: #999;
+}
+
+.sendheadTitle {
+    font-size: 30rpx;
+    height: 100rpx;
+    line-height: 120rpx;
+}
+
+.sendheadTitle text {
+    margin: 0 30rpx;
+}
+
+.sendheadTitle .cutLine {
+    width: 270rpx;
+    height: 2rpx;
+    background: #b5bdc6;
+    line-height: 30rpx;
+    display: inline-block;
+    vertical-align: super;
+}
+
+.commodity_screen {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.5;
+    overflow: hidden;
+    z-index: 1000;
+    color: #fff;
+}
+
+.commodity_attr_box {
+    width: 100%;
+    /* overflow: hidden; */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2000;
+    background: #fff;
+    padding-top: 20rpx;
+}
+
+.detailBottomBtn button {
+    border-radius: 0;
+}
+
+.wxParse image {
+    width: 100% !important;
+}
+
+.TimelineBOX {
+    font-size: 28rpx;
+}
+
+.TimelineMessages {
+    padding: 0 40rpx;
+}
+
+.TimelineMessages text {
+    display: block;
+    padding: 30rpx 0;
+    width: 100%;
+    margin-bottom: 30rpx;
+}
+
+.TimelineMessage {
+    padding: 30rpx 40rpx;
+    color: #444;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Timeline {
+    padding: 0 40rpx 0rpx 142rpx;
+    color: #9b9191;
+    box-sizing: border-box;
+}
+
+.Timeline-content {
+    border-left: 2px solid #eee;
+    padding-left: 25rpx;
+}
+
+.Timeline-content .boxItem {
+    position: relative;
+    margin-bottom: 80rpx;
+}
+
+.Timeline-content .boxItem .boxItemDate {
+    display: block;
+    width: 116rpx;
+    text-align: right;
+    position: absolute;
+    left: -170rpx;
+    top: -9rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+}
+
+.Timeline-content .boxItem .boxItemText {
+    flex: 1;
+    position: relative;
+    top: -9rpx;
+}
+
+.Timeline-content .boxItem .boxItemDutton {
+    display: block;
+    width: 20rpx;
+    height: 20rpx;
+    border-radius: 100%;
+    position: absolute;
+    left: -35rpx;
+}
+
+.once,
+.Timeline-content .boxItem .boxItemDutton.once {
+    background: #f03340;
+}
+
+.Timeline-content .boxItem .boxItemDutton.nullce {
+    background: #ddd;
+}
+
+.Timeline-content .boxItem .telphoneColor {
+    color: #6ea1e2 !important;
+}
+
+.fristItemColor,
+.Timeline-content .boxItem.fristItemColor {
+    color: #444;
+}
+
+.TimelineLine {
+    padding: 0 30rpx;
+}
+
+.TimelineLine text {
+    display: block;
+    height: 2rpx;
+    background: #e0dede;
+}
+
+.priceStyle,
+.fontSize40 {
+    font-size: 40rpx;
+}
+
+.displayflex {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.myOrderItemBtnBoxColor9b9 {
+    color: #9b9191;
+    border: 1px solid #9b9191;
+}
+
+.myOrderItemBtnBoxColorf45 {
+    color: #f03340;
+    border: 1px solid #f03340;
+}
+
+.rotate45 {
+    transform: rotate(45deg) translateY(-1px);
+    display: block;
+    font-size: 40rpx;
+}
+
+.time {
+    font-size: 24rpx;
+}
+
+.ad_popError {
+    position: fixed;
+    min-width: 300rpx;
+    font-size: 28rpx;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    border-radius: 8rpx;
+    color: #eaeaea;
+    background: rgba(0, 0, 0, .7);
+}
+
+.itemFooterBtn {
+    width: 160rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    border-radius: 60rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    box-sizing: border-box;
+    margin-left: 20rpx;
+}
+
+.itemFooterBtn.cancel {
+    color: #444;
+    border: 1px solid #a1a1a1;
+}
+
+.itemFooterBtn.confirm {
+    color: #f03340;
+    background: #fff;
+    border: 1px solid #f03340
+}
+
+/* 商品详情css */
+
+.RichEditor-blockquote {
+    border-left: 5px solid #eee;
+    color: #666;
+    /* font-family: 'Hoefler Text', 'Georgia', serif; */
+    /* font-style: italic; */
+    margin: 16px 0;
+    padding: 10px 20px;
+}
+
+.RichEditor-textalign-left {
+    text-align: left;
+}
+
+.RichEditor-textalign-right {
+    text-align: right;
+}
+
+.RichEditor-textalign-center {
+    text-align: center;
+}
+
+.RichEditor-textalign-justify {
+    text-align: justify;
+}
+
+/* extends */
+
+.unordered-list-circle-ul {
+    padding-left: 25px;
+    list-style-type: circle;
+}
+
+.unordered-list-circle-ul li {
+    list-style-type: circle;
+}
+
+.unordered-list-square-ul {
+    padding-left: 25px;
+    list-style-type: square;
+}
+
+.unordered-list-square-ul li {
+    list-style-type: square;
+}
+
+.unordered-list-disc-ul {
+    padding-left: 25px;
+    list-style-type: disc;
+}
+
+.unordered-list-disc-ul li {
+    list-style-type: disc;
+}
+
+.ordered-list-123-ol {
+    padding-left: 25px;
+    list-style-type: decimal;
+}
+
+.ordered-list-123-ol li {
+    list-style-type: decimal;
+}
+
+.ordered-list-abc-ol {
+    padding-left: 25px;
+    list-style-type: lower-alpha;
+}
+
+.ordered-list-abc-ol li {
+    list-style-type: lower-alpha;
+}
+
+.ordered-list-ABC-ol {
+    padding-left: 25px;
+    list-style-type: upper-alpha;
+}
+
+.ordered-list-ABC-ol li {
+    list-style-type: upper-alpha;
+}
+
+.ordered-list-lowroman-ol {
+    padding-left: 25px;
+    list-style-type: lower-roman;
+}
+
+.ordered-list-lowroman-ol li {
+    list-style-type: lower-roman;
+}
+
+.ordered-list-upperroman-ol {
+    padding-left: 25px;
+    list-style-type: upper-roman;
+}
+
+.ordered-list-upperroman-ol li {
+    list-style-type: upper-roman;
+}
+
+.fontSize_12 {
+    font-size: 12px;
+}
+
+.fontSize_13 {
+    font-size: 13px;
+}
+
+.fontSize_14 {
+    font-size: 14px;
+}
+
+.fontSize_15 {
+    font-size: 15px;
+}
+
+.fontSize_16 {
+    font-size: 16px;
+}
+
+.fontSize_17 {
+    font-size: 17px;
+}
+
+.fontSize_18 {
+    font-size: 18px;
+}
+
+.richText-image {
+    width: 100%;
+}
+
+.richText-image img {
+    width: 100%;
+}
+
+.richText-video {
+    width: 100%;
+}
+
+.richText-video video {
+    width: 100%;
+}
+
+.GoodLine {
+    width: 690rpx;
+    height: 1px;
+    background: #e8e8e8;
+    margin-bottom: 30rpx;
+}

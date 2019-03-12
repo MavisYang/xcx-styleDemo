@@ -1,0 +1,98 @@
+<wxs src="./../../utils/filter.wxs" module="filter" />
+<view class="order">
+    <view class="header" bindtap='changeIndexValue'>
+        <view class="{{IndexValue == '0'?'active headerItem':'headerItem'}}" data-index='0'>全部</view>
+        <view class="{{IndexValue == '1'?'active headerItem':'headerItem'}}" data-index='1'>待支付</view>
+        <view class="{{IndexValue == '2'?'active headerItem':'headerItem'}}" data-index='2'>待发货</view>
+        <view class="{{IndexValue == '5'?'active headerItem':'headerItem'}}" data-index='5'>已发货</view>
+        <view class="{{IndexValue == '7'?'active headerItem':'headerItem'}}" data-index='7'>已完成</view>
+    </view>
+    <view class="bgColor noCodeBox" wx:if='{{!dataArr.length}}'>
+        <image class="imageIC" src='/images/pic_delivery_empty.png' />
+        <text class="noCodeText">暂无订单信息</text>
+    </view>
+    <scroll-view wx:else scroll-y class="content" bindscrolltolower='loadMoreList'>
+        <block wx:for='{{dataArr}}' wx:key='index'>
+            <view class="contentItem" bindtap='goOrderDetail' data-orderid='{{item.orderId}}'
+                data-purchaseinsid="{{item.purchaseInsId}}">
+                <!-- <view class='itemHeader createDate'>
+                    <text>创建时间：</text>
+                    <text>{{filter.formatTime(item.createDate)}}</text>
+                </view> -->
+                <view class="itemHeader">
+                    <image class="userImg" src='{{userMessage.avatarUrl}}' />
+                    <view class="itemMessage">
+                        <view class="messageItem">
+                            <text class="name">{{userMessage.nickName}}</text>
+                            <text class="orderStuts">{{filter.orderStuts(item.orderStatus)}}</text>
+                        </view>
+                        <view class="messageItem">
+                            <text class="orderNo">订单编号：{{item.orderNo}}</text>
+                            <text class="productNum">共{{item.items.length}}个商品</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="itemcontent">
+                    <block wx:for='{{item.items}}' wx:for-index="idx" wx:for-item="PList" wx:key='idx'>
+                        <view class="PlistItem">
+                            <image class="itemImg" src='{{PList.skuPic}}' />
+                            <view class="pListContent">
+                                <view class="title">{{PList.skuName}}</view>
+                                <!-- <view class="pListText"><text class="num" wx:for='{{PList.attrs}}' wx:key='index'> {
+        {
+        item.value
+    }
+}
+
+</text></view> -->
+                                <view class="pListNum">
+                                    <text class="num">x{{PList.quantity}}</text>
+                                    <text class="price">
+                                        <text>￥</text>
+                                        <text>{{filter.Float2(PList.retailPrice)}}</text>
+                                    </text>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="itemPrice">
+                            <text class="title1">合计：</text>
+                            <view class="mar">
+                                <text class="unit1">￥</text>
+                                <text class="price1">{{filter.Float2(item.billInfo.totalPrice)}}</text>
+                            </view>
+                            <view class="title1">(含运费：
+                                <text class="unit2">￥</text>
+                                <text class="price2">{{filter.Float2(item.billInfo.expressPrice)}}</text>)</view>
+                        </view>
+                        <view class="itemFooter" wx:if='{{item.orderStatus == 2}}'>
+                            <view class="itemFooterBtn cancel" catchtap='applyOrder' data-orderstatus = '{{item.orderStatus}}' data-purid='{{item.purchaseInsId}}'
+                                data-orderid='{{item.orderId}}'>
+                                <picker catchchange='gotoRefund' wx:if='{{PList.refundStatus == 0 || PList.refundStatus == 3}}'
+                                    range='{{refundArr2}}'>申请售后</picker>
+                                <view wx:else catchtap='refundDeatil' data-ticketid='{{item.refundTicketId}}'>售后详情</view>
+                            </view>
+                        </view>
+                        <view class="itemFooter" wx:if='{{item.orderStatus == 5 || item.orderStatus == 13}}'>
+                            <view class="itemFooterBtn cancel" catchtap='applyOrder' data-orderstatus = '{{item.orderStatus}}' data-purid='{{item.purchaseInsId}}'
+                                data-orderid='{{item.orderId}}'>
+                                <picker catchchange='gotoRefund'  wx:if='{{PList.refundStatus == 0 || PList.refundStatus == 3}}'
+                                    range='{{refundArr1}}'>申请售后</picker>
+                                <view wx:else catchtap='refundDeatil' data-ticketid='{{item.refundTicketId}}'>售后详情</view>
+                            </view>
+                            <view class="itemFooterBtn cancel" catchtap='goLogistics' data-orderid='{{item.orderId}}'
+                                data-orderno='{{item.orderNo}}'>查物流</view>
+                            <view class="itemFooterBtn confirm" catchtap='affirmOrder' data-orderid='{{item.orderId}}'
+                                data-purid='{{item.purchaseInsId}}'>确认收货</view>
+                        </view>
+                        <view class="itemFooter" wx:if='{{item.orderStatus == 1}}'>
+                            <view class="itemFooterBtn cancel" catchtap='cancelOrder' data-orderid='{{item.orderId}}'>取消</view>
+                            <view class="itemFooterBtn confirm" catchtap='payOrder' data-orderid='{{item.orderId}}'
+                                data-money='{{filter.Float2(item.billInfo.totalPrice)}}'>付款</view>
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </block>
+        <view class="ad_popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
+    </scroll-view>
+</view>

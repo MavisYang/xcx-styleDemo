@@ -1,0 +1,92 @@
+<!--pages/user/orderDetail/orderDetail.wxml-->
+<wxs src="./../../utils/filter.wxs" module="filter" />
+<view class="orderDetail">
+	<!-- <view class="{{orderDetail.items[0].status == 1?'headBox bgGray':'headBox'}}">
+		<view class="innerBox clearfix">
+			<view class="left">
+				<span class="iconBackground orderDone" wx:if="{{orderDetail.orderStatus == 7}}"></span>
+				<span class="iconBackground notPaid" wx:if="{{orderDetail.orderStatus == 1}}"></span>
+				<span class="iconBackground delivered" wx:if="{{orderDetail.orderStatus == 2}}"></span>
+				<span class="iconBackground delivering" wx:if="{{orderDetail.orderStatus == 5}}"></span>
+			</view>
+			<view class="left">
+
+				<span wx:if="{{orderDetail.orderStatus == 7}}">{{'订单已完成'}}</span>
+				<span wx:if="{{orderDetail.orderStatus == 2}}">{{'等待卖家发货'}}</span>
+				<view wx:if="{{orderDetail.orderStatus == 5}}" class="deliveringTip">{{'快递运输中'}}
+					<!-- <text>{{'剩9天23小时确认收货'}}</text> -->
+	<!-- </view>
+				<view wx:if="{{orderDetail.orderStatus == 1}}" class="deliveringTip">{{'等待买家付款'}}
+					<!-- <text>{{'剩2天23小时自动关闭'}}</text> -->
+	<!-- </view>
+				<span wx:if='{{orderDetail.orderStatus == 3 || orderDetail.orderStatus == 4}}'>订单已取消</span>
+				<span wx:if='{{orderDetail.orderStatus == 6}}'>订单待评价</span>
+			</view>
+		</view>
+	</view> -->
+	<scroll-view scroll-y class="orderWrap">
+		<view class="orderWrapBox">
+			<view class="addressBox border-bottom clearfix">
+				<!-- <view class="iconBackground address"></view> -->
+				<view class="innerWrap">
+					<view class="innerTitle clearfix">
+						<span class="userName">{{orderAdr.contactor}}</span>
+						<span class="telPhone">{{orderAdr.contactTel}}</span>
+					</view>
+					<view class="addressDetail">{{orderAdr.provinceName}} {{orderAdr.cityName}} {{orderAdr.countyName}} {{orderAdr.detailAddr}}</view>
+				</view>
+			</view>
+			<view class="orderList border-bottom">
+				<view class="goods clearfix" wx:for='{{orderDetail.items}}' wx:key='index'>
+					<view class="headerItemTop">
+						<text>包裹{{index+1}}</text>
+						<text class='colorRed'>{{filter.orderStuts(orderDetail.orderStatus)}}</text>
+					</view>
+					<view class="goodsBox clearfix">
+						<image src="{{item.skuPic}}" class="left" />
+						<view class="rightBox right">
+							<view class="goodName">{{item.skuName}}</view>
+							<view class="scaleBox">
+								<view class="priceBox">
+									<view class="volume colorA1">x{{item.quantity}}</view>
+									<view class="price">¥{{filter.Float2(item.retailPrice)}}</view>
+								</view>
+							</view>
+						</view>
+					</view>
+					<view class="att clearfix" wx:if='{{orderDetail.orderStatus == 2 || orderDetail.orderStatus == 5 || orderDetail.orderStatus == 13}}'>
+						<picker wx:if='{{item.refundStatus == 0 || item.refundStatus == 3 }}' class="refund"
+						 catchchange='gotoRefund' range='{{orderDetail.orderStatus ==2 ? refundArr2:refundArr1}}'>申请售后</picker>
+						<view class="refund " wx:else catchtap='refundDeatil' data-ticketid='{{orderDetail.refundTicketId}}'>售后详情</view>
+					</view>
+				</view>
+			</view>
+			<view class="goodsTip clearfix border-bottom bgColor">
+				<view class="money">
+					<view class="sum">合计：
+						<span>¥</span>
+						<span style="font-size: 40rpx;">{{orderDetail.billInfo.totalPrice}}</span>
+					</view>
+					<text class="textAS">(配送费用：¥{{orderDetail.billInfo.expressPrice}})</text>
+				</view>
+			</view>
+			<view class="{{orderDetail.orderStatus == 1 ?'orderNumber bgColor':'orderNumber border-bottom bgColor'}}">
+				<view>订单编号：{{orderDetail.orderNo}}</view>
+				<view>创建时间：{{orderDetail.createDate}}</view>
+				<view wx:if='{{orderDetail.comments}}'>买家留言：{{orderDetail.comments}}</view>
+			</view>
+		</view>
+	</scroll-view>
+	<view class="footer">
+		<view class="buttonBox clearfix" wx:if="{{orderDetail.orderStatus == 5}}">
+			<view class="deliver right" bindtap="skipLogistics">查看物流</view>
+			<view class="receive right" bindtap='confirmOrder'>确认收货</view>
+
+		</view>
+		<view class="buttonBox clearfix" wx:if="{{orderDetail.orderStatus == 1}}">
+			<view class="deliver right" catchtap='payOrder'>付款</view>
+			<view class="receive cancel right" catchtap='cancelOrder'>取消</view>
+
+		</view>
+	</view>
+</view>
