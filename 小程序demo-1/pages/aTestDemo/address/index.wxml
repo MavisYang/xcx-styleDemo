@@ -1,0 +1,148 @@
+
+<view>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="sell-secKill">
+      <view class="sell-secKill-header-from-item">
+        <text class="color4 item-title">商品标题</text>
+        <view class="item-ipt-l ipt-box bgColorF6 borderF6 color4">
+          <input maxlength="30" bindinput="changeName" class="item-ipt" placeholder='添加商品名称' placeholder-class="colorA1" />
+        </view>
+        <view class="colorRed">*</view>
+      </view>
+      <view class="sell-secKill-header-from-item">
+        <text class="color4 item-title">门店地址</text>
+        <view class="ipt-box item-ipt-l bgColorF6 borderF6">
+          <input disabled value="{{fromData.address}}" bindtap="changeAdr" class="color4 item-ipt item-ipt-adr" placeholder="调取微信自带地址"
+            placeholder-class="colorA1" />
+        </view>
+        <view class="colorRed">*</view>
+      </view>
+      <view class="sell-secKill-header-from-item">
+        <text class="color4 item-title">收获地址</text>
+        <view class='address3'>
+          <picker mode="region" bindchange='bindUserAdrChange' value='{{userAdr}}'>
+            <view class="ipt-box item-ipt-l bgColorF6 borderF6">{{userAdr[0]}}{{userAdr[1]}}{{userAdr[2]}}</view>
+          </picker>
+          <textarea class="textarea color4 bgColorF6 borderF6 " placeholder="详细地址，如街道、楼牌号等" bindinput='bindadrDetail' placeholder-class='colorA1'
+            type='number' value="{{adrDetail}}"/>
+        </view>
+        <view class="colorRed">*</view>
+    
+      </view>
+      <view class="sell-secKill-header-from-item">
+        <text class="color4 item-title">动态地址</text>
+        <view class="ipt-box item-ipt-l bgColorF6 borderF6">
+          <input disabled value="{{areaSelectedStr}}" bindtap="cascadePopup" class="color4 item-ipt item-ipt-adr" placeholder="请选择动态地址"
+            placeholder-class="colorA1" />
+        </view>
+        <view class="colorRed">*</view>
+      </view>
+      <view class="sell-secKill-header-from-item">
+        <text class="color4 item-title">地理位置</text>
+        <view class="item-ipt-l ipt-box bgColorF6 borderF6 color4">
+          <input maxlength="30" disabled value="{{poiAddress}}" bindtap="fetchPOI" class="item-ipt poi" placeholder='自动获取地址' placeholder-class="colorA1"
+          />
+        </view>
+        <view class="colorRed">*</view>
+      </view>
+    </view>
+    <view class="sectionBox">
+      <view class="section">
+        <view class="section-title">switch</view>
+        <switch name="switch" class="flex100"/>
+      </view>
+      <view class="section">
+        <view class="section-title">slider</view>
+        <slider name="slider" class="flex100" show-value></slider>
+      </view>
+      <view class="section">
+        <view class="section-title">input</view>
+        <input name="input" class="flex100" placeholder="请输入" placeholder-class="colorA1"/>
+      </view>
+      <view class="section">
+        <view class="section-title">radio</view>
+        <radio-group name="radio" class="flex100 radioGroup">
+          <label><radio value="radio1" />radio1</label>
+          <label><radio value="radio2" />radio2</label>
+        </radio-group>
+      </view>
+      <view class="section section-checkboxGroup">
+        <view class="section-title">checkbox</view>
+        <checkbox-group name="checkbox" class="flex100 checkboxGroup">
+          <label><checkbox value="checkbox1" />checkbox1</label>
+          <label><checkbox value="checkbox2" />checkbox2</label>
+          <label><checkbox value="checkbox3" />checkbox2</label>
+        </checkbox-group>
+      </view>
+      <view class="section">
+          <switch name="switch" bindchange='switchChange' class="flex100" />
+      </view>
+      
+    </view>
+
+    <view class="btnBox">
+      <button size="primary" type="primary" form-type="submit">保存</button>
+      <button size="primary" form-type="reset" type="warn">重置</button>
+    </view>
+   
+  </form>
+
+
+<!-- 选择地址的model-->
+<view class="modal" >
+  <view class="modal-mask {{maskVisual}}" bindtap="cascadeDismiss"></view>
+  <view class="modal-content" animation='{{animationData}}'>
+    <view class="modal-header">
+      <text class="modal-title">所在地区</text>
+      <text class="modal-close" bindtap="cascadeDismiss">X</text>
+    </view>
+    <view class="modal-body">
+      <view class="viewpager">
+        <text class="viewpager-title {{current == 0 ? 'area-selected' : ''}}" bindtap="changeCurrent" data-current="0">{{provinceName}}</text>
+        <text class="viewpager-title {{current == 1 ? 'area-selected' : ''}}" bindtap="changeCurrent" data-current="1">{{cityName}}</text>
+        <text class="viewpager-title {{current == 2 ? 'area-selected' : ''}}" bindtap="changeCurrent" data-current="2">{{regionName}}</text>
+        <text class="viewpager-title {{current == 3 ? 'area-selected' : ''}}" bindtap="changeCurrent" data-current="3">{{townName}}</text>
+      </view>
+      <swiper class="swiper-area" current="{{current}}" bindchange="currentChanged">
+        <block wx:if='{{province.length > 0}}'>
+          <swiper-item>
+            <scroll-view scroll-y="true" class="viewpager-listview">
+              <view wx:for='{{province}}' wx:key='index' data-index="{{index}}" data-id='{{item.id}}' bindtap='provinceTapped'>
+                <text class="{{index == provinceIndex?'area-selected':''}}">{{item.fullname}}</text>
+              </view>
+            </scroll-view>
+          </swiper-item>
+        </block>
+        <block wx:if='{{city.length > 0}}'>
+          <swiper-item>
+            <scroll-view scroll-y="true" class="viewpager-listview">
+              <view wx:for='{{city}}' wx:key='index' data-index="{{index}}" data-id='{{item.id}}' bindtap='cityTapped'>
+                <text class="{{index == cityIndex?'area-selected':''}}">{{item.fullname}}</text>
+              </view>
+            </scroll-view>
+          </swiper-item>
+        </block>
+        <block wx:if='{{region.length > 0}}'>
+          <swiper-item>
+            <scroll-view scroll-y="true" class="viewpager-listview">
+              <view wx:for='{{region}}' wx:key='index' data-index="{{index}}" data-id='{{item.id}}' bindtap='regionTapped'>
+                <text class="{{index == regionIndex?'area-selected':''}}">{{item.fullname}}</text>
+              </view>
+            </scroll-view>
+          </swiper-item>
+        </block>
+        <block wx:if='{{town.length > 0}}'>
+          <swiper-item>
+            <scroll-view scroll-y="true" class="viewpager-listview">
+              <view wx:for='{{town}}' wx:key='index' data-index="{{index}}" data-id='{{item.id}}' bindtap='townTapped'>
+                <text class="{{index == townIndex?'area-selected':''}}">{{item.fullname}}</text>
+              </view>
+            </scroll-view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+</view>
+<view class="ad_popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
+</view>

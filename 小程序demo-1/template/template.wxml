@@ -1,0 +1,27 @@
+<template name='itemList'>
+    <view class="groupNoEmpty">
+        <view class='groupWork-item'>
+            <image class='item-img' src='{{listItem.picImg}}' />
+              <view class='item-info'>
+                <view class='item-info-title'>{{listItem.name}}</view>
+                <view class='onlyPrice'>单买价￥{{listItem.showPrice}}</view>
+                <view class='groupPrice'>
+                    <text>{{listItem.teamSize}}人团￥</text>
+                    <text class='price'>{{listItem.retailPrice}}</text>
+                    <text class='line'>/</text>
+                    <text>赚￥{{listItem.earnPrice}}</text>
+                </view>
+                <view class='item-info-footer'>
+                    <view class='groupUserNum'>
+                        已有
+                        <text>{{listItem.teamNo}}</text> 人成团
+                    </view>
+                    <view class='goGroupWork' bindtap='goJoin'>
+                        <text>去拼团</text>
+                        <image src='/images/ic_go.png' />
+                    </view>
+                </view>
+            </view>  
+        </view>
+    </view>
+</template>

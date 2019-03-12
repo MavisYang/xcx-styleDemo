@@ -1,0 +1,59 @@
+/**index.wxss**/
+.userCenter{
+   width: 100%;
+   height: 100%;
+  
+}
+.uc-header{
+  position: relative;
+}
+.uc-header .uc-bgImg{
+ width: 100%;
+ height: 300rpx;
+}
+.uc-userInfo{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  display: inline-block;
+  text-align: center;
+  
+}
+.uc-userInfo .userinfo-avatar{
+  width: 150rpx;
+  height: 150rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+}
+.uc-userInfo .userinfo-nickname {
+  color: #fff;
+  font-family: PingFangSC-Regular;
+font-size: 30rpx;
+}
+.uc-content{
+  margin-top: 12rpx;
+ padding: 0 24rpx;
+ height: 100%;
+}
+.ucc-order{
+  padding: 24rpx 0;
+  font-family: PingFangSC-Regular;
+font-size: 30rpx;
+color: #444444;
+border-bottom: 1px solid #f6f6f6;
+}
+.ucc-order image{
+   vertical-align: middle; 
+}
+.iconImg{
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 20rpx;
+}
+.arrowImg{
+  width:22rpx;
+height:32rpx;
+
+}

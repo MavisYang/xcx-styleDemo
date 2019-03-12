@@ -1,0 +1,77 @@
+<import src='../../template/template.wxml'/>
+<scroll-view class="tab-scroll" scroll-with-animation scroll-x scroll-left="{{scrollToLeft}}">
+  <block wx:for="{{categories}}" wx:key="{{index}}">
+    <view id="title{{index}}" class="display-inline-block tab-item " data-id="{{item.id}}" data-index="{{index}}" bindtap="switchTab">
+      <text class="tab-text {{currentTabIndex == index ? 'tab-text-on' : ''}}">{{item.name}}</text>
+    </view>
+  </block>
+</scroll-view>
+<scroll-view scroll-y="true" scroll-with-animation scroll-top="{{scrollTop}}" style="height: 100%;" bindscroll="scroll" bindscrolltoupper="upper" bindscrolltolower="lower" >
+  <view class='homeWrapper'>
+    <view id='the-id'>
+      wxml节点信息
+    </view>
+  <!-- imgView begin -->
+  <view class='imgView'>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view class="weui-uploader">
+          <view class="weui-uploader__hd">
+            <view class="weui-uploader__title">图片上传预览删除</view>
+            <!-- <view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>  -->
+          </view>
+          <view class="weui-uploader__bd">
+            <view class="weui-uploader__files">
+              <block wx:for="{{imageList}}" wx:key='index' wx:for-item="image">
+                <view class="weui-uploader__file">
+                  <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                  <view class='weui-uploader__delete' data-index="{{index}}" bindtap='deleteImage'>删除</view>
+                </view>
+              </block>
+            </view>
+            <view class="weui-uploader__input-box">
+              <view class="weui-uploader__input" bindtap="chooseImage">
+                点击上传图片
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- imgView end -->
+   <!-- testwrapper begin -->
+    <view class="testwrapper">
+      <view animation='{{animationData}}' style="background: red;height: 100rpx;width: 100rpx;"></view>    
+      <a href="tel://{{phone}}" bindtap='handleCallPhone'>拨打电话</a>
+      <view> <button size='mini' type='primary' bindtap='handleScanCode'>点击扫码</button> </view>
+      <view> <button size='mini' type='primary' open-type='contact'>打开客服会话</button> </view>
+      <view> <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" size='mini' type='primary'>获取手机号</button> </view>
+      <view> 
+        <button size='mini' type='primary' bindtap='handleCopy'>copy</button>
+        <button size='mini' type='primary' bindtap='getCopyText'>get copy text</button>
+      </view>
+      <view>
+        <button size='mini' type="primary" bindtap='handleAddContack'>添加手机联系人</button>
+      </view>
+      <view>
+        <text style="margin-right: 20rpx">{{text}}</text>
+        <button size='mini' type="primary" bindtap='handleShowAction'>显示ActionSheet</button>      
+      </view>
+      <view>
+        <button size='mini' type="primary" bindtap='paySubmitBox'>微信支付</button>
+      </view>
+      <view>
+        <button size='mini' type="primary" 
+        open-type="launchApp" app-parameter="wechat" binderror="launchAppError">打开APP</button>
+      </view>
+    </view>
+    <!-- testwrapper end -->
+  </view>
+  <view class="go-top" bindtap="goTop" wx:if="{{showGoTop}}">
+    <image src="/images/goTop.png"></image>
+  </view>
+  <view>template：</view>
+  <template is='itemList' data='{{listItem}}'></template>
+</scroll-view>
+

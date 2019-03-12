@@ -1,0 +1,65 @@
+<wxs src="../../utils/filter.wxs" module="filter"></wxs>
+<!-- index.wxml -->
+<view class="orderWrpper bgf6Color">
+    <view class="topTabList bgWriteColor">
+        <view class="orderTab">
+            <block wx:for="{{orderTitle}}" wx:key="{{index}}">
+                <view class="status {{IndexValue ==index?'current':''}}" data-index="{{index}}" bindtap="handleChangeTab">
+                    {{item.label}}
+                </view>
+            </block>
+        </view>
+    </view>
+    <view class="noCodeBox bgWriteColor" wx:if="{{!orderList.length}}">
+        <image class="imgCenter" src="/images/pic_delivery_empty.png"></image>
+        <text class="noCodeText">暂无订单信息</text>
+    </view>
+    <scroll-view class="scroll" wx:else scroll-y="true" bindscrolltolower='loadMoreList' style="height: 100%;">
+        <block wx:for="{{orderList}}" wx:key="{{index}}">
+            <view class="orderList padding1 bgWriteColor">
+                <view class='itemHeader f6Bottom'>
+                    <image class='userImg' src='{{item.skuPic}}'></image>
+                    <view class='itemMessage'>
+                        <view class='flexSpaceBetween'>
+                            <text class='name'>名字</text>
+                            <text class='orderStatus'>待发货</text>
+                        </view>
+                        <view class='flexSpaceBetween'>
+                            <text class='orderNO textHide'>订单号：121212111212121121212112121211212121</text>
+                            <text class='productNum'>3件商品</text>
+                        </view>
+                    </view>
+                </view>
+                <view class='itemContent'>
+                    <image class='skuImg' src='/images/pic_delivery_empty.png'></image>
+                    <view class='listItem'>
+                        <view class="listInfo  multiTextHide-2">{{item.skuName}}12222</view>
+                        <view class="listNum flexSpaceBetween">
+                            <text class="num">X1</text>
+                            <text class="price">¥100</text>
+                        </view>
+                    </view>
+
+
+                </view>
+                <view class='itemPrice f6Bottom f6Top'>
+                    合计：<text>¥<text class='price'>200</text></text>(含运费：￥0)
+                </view>
+                <view class='itemBtnBox'>
+                    <view class='btnBox'>
+                        <view class='btn btnGray'>取消订单</view>
+                        <view class='btn btnRed'>付款15:59</view>
+                    </view>
+                    
+                </view>
+
+            </view>
+        </block>
+        <view  wx:if='{{!isMore}}' class='noMore'>
+            <text>没有更多了</text>
+        </view>
+        <view wx:else class='noMore'>
+            <text>下拉加载更多</text>
+        </view>
+    </scroll-view>
+</view>

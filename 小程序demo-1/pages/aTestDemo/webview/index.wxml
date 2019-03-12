@@ -1,0 +1,2 @@
+<!--pages/aTestDemo/webview/index.wxml-->
+<web-view src='h5Url'></web-view>

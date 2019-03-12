@@ -1,0 +1,46 @@
+<!-- 引入wxml -->
+<import src='../../../we-cropper/we-cropper.wxml'></import>
+
+<view wx:if='{{cropperStatus}}' style="background:#FF3939;position: fixed;top:0;left: 0; z-index: 99999;height: 100%">
+  <template is='we-cropper' data='{{...cropperOpt}}'></template>
+  <view class="cropper-wrapper">
+    <text bindtap='getCropperImage'>截取图片</text>
+  </view>
+</view>
+<view class="uploadImgWrapper">
+  <view class="upload-view">
+    <block wx:if='{{!activeImg.path}}'>
+      <image class="cropperImg" src="/images/pic_upload@3x.png" bindtap='selectImg' data-type="1"></image>
+    </block>
+    <block wx:else>
+      <view class="changeupload">
+        <image class="uploadImg" src="{{activeImg.path}}"></image>
+        <view class="changeImgBtn" bindtap='selectImg' data-src='{{activeImg}}' data-type="2">点击更换图片</view>
+        <view class="deleteImgBtn" bindtap='deleteUploadImg' data-src='{{activeImg}}' >
+          <image src="/images/cancelIcon.png"></image>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="imageWrapper">
+    <block wx:if='{{imgUrlList.length}}' wx:for='{{imgUrlList}}' wx:key='index'>
+      <view class="changeImgItem {{activeImg.value===index?'changeImgHover':''}}">
+        <image class="changeImg-image" src="{{item.path}}" bindtap='activeUploadImg' data-src="{{item}}" data-index='{{index}}'/>
+        <view hidden='{{index!==0}}' class="changeImg-btn">主图</view>
+      </view>
+    </block>
+    <view wx:if='{{imgUrls.length!=5}}' class="changeImgItem" bindtap='selectImg' data-type="1">
+      <image class="changeImg-image" src="/images/pic_upload_s.png"></image>
+    </view>
+  </view>
+</view>
+
+
+<view>
+  <button type='primary' bindtap='handleUploadFile'>上传图片</button>
+  <view wx:if='{{chooseImg}}' wx:for='{{chooseImg}}' wx:key='index'>
+    <image src='{{item}}' data-src="{{item}}" bindtap='previewImage'></image>
+   </view>
+</view>
+
+

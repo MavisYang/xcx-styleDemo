@@ -1,0 +1,115 @@
+<view>
+  <view class='timeWrapper'>
+    <view class="sell-secKill-header-from-item">
+      <text class="color4 item-title">hh:mm</text>
+      <view class="item-ipt-l ipt-box bgColorF6 borderF6 color4">
+        <picker mode='time' value="{{time}}" bindchange='bindTimeChange' start='12:01'>
+          <input disabled value='{{time}}' class="item-ipt" placeholder='选择日期' placeholder-class="colorA1" />
+        </picker>
+      </view>
+    </view>
+    <view class="sell-secKill-header-from-item">
+      <text class="color4 item-title">YYYY-MM-DD选择器</text>
+      <view class="item-ipt-l ipt-box bgColorF6 borderF6 color4">
+        <picker mode='date' value="{{date}}" bindchange='bindDateChange' start='{{startDate}}' end='{{endDate}}'>
+          <input disabled value='{{date}}' class="item-ipt" placeholder='选择日期' placeholder-class="colorA1" />
+        </picker>
+      </view>
+    </view>
+    <view class="sell-secKill-header-from-item">
+      <text class="color4 item-title">选择时间</text>
+      <view class="item-ipt-l ipt-box bgColorF6 borderF6 color4">
+          <input disabled value='{{dateValue}}' bindtap='openDateModule' class="item-ipt" placeholder='选择时间' placeholder-class="colorA1" />
+      </view>
+    </view>
+  </view>
+  <view class='pickerWrapper'>
+    <view class="sell-secKill-header-from-item">
+      <text class="color4 item-title">普通选择器</text>
+      <view class="item-ipt-l ipt-box bgColorF6 borderF6 color4">
+        <picker model='selector' bindchange='handleSelector' range='{{array}}' value='arrayIndex'>
+          <!-- <view>{{array[arrayIndex]}}</view> -->
+          <input type="text" disabled class="iptMessagePickerIpt" placeholder="请选择售后原因" value="{{array[arrayIndex]}}" placeholder-class="changePickerClass" />
+          <span class="iptMessagePickerIcon iconBackground"></span>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+ 
+</view>
+<view class="modal">
+  <view class="modal-mask {{maskVisual}}" bindtap="closeDateModule"></view>
+  <view class="modal-content" animation='{{animationData}}'>
+    <view class="modal-header">
+      <text class="modal-cancel" bindtap="closeDateModule">取消</text>
+      <text class="modal-confirm" bindtap="confirmsDateModule">确定</text>
+    </view>
+    <!-- <view class="modal-body"> -->
+      <picker-view class='date-module-main' indicator-style="height: 50px;" value='{{valueInit}}' bindchange="bindDateChange">
+        <picker-view-column class="date-module-main-item">
+          <view wx:for="{{years}}" wx:key='index' style="line-height: 50px">{{item}}</view>
+        </picker-view-column>
+        年
+        <picker-view-column class="date-module-main-item">
+          <view wx:for="{{months}}" wx:key='index' style="line-height: 50px">{{item}}</view>
+        </picker-view-column>
+        月
+        <picker-view-column class="date-module-main-item">
+          <view wx:for="{{days}}" wx:key='index' style="line-height: 50px">{{item}}</view>
+        </picker-view-column>
+        日
+        <picker-view-column class="date-module-main-item">
+          <view wx:for="{{hours}}" wx:key='index' style="line-height: 50px">{{item}}</view>
+        </picker-view-column>
+        时
+        <picker-view-column class="date-module-main-item">
+          <view wx:for="{{minutes}}" wx:key='index' style="line-height: 50px">{{item}}</view>
+        </picker-view-column>
+        分
+      </picker-view>
+    <!-- </view> -->
+  </view>
+</view>
+
+<view class="sell-secKill-header-from-item">
+  <text class="color4 item-title">时间选择器（选择时分）</text>
+  <view class="item-ipt-l ipt-box bgColorF6 borderF6 color4">
+  <picker mode="time" value="{{time}}" start="09:00" end="17:30" bindchange="changeTime">
+    <view class="tui-picker-detail">
+      午饭时间: {{time}}
+    </view>
+  </picker>
+  </view>
+</view>
+<view class="sell-secKill-header-from-item">
+  <text class="color4 item-title">日期选择器（选择年月日）</text>
+  <view class="item-ipt-l ipt-box bgColorF6 borderF6 color4">
+    <picker mode="date" value="{{date}}" start="2017-10-01" end="2017-10-08" bindchange="changeDate">
+      <view class="tui-picker-detail">
+        国庆出游: {{date}}
+      </view>
+    </picker>
+  </view>
+</view>
+<view class="sell-secKill-header-from-item">
+  <text class="color4 item-title">日期时间选择器（精确到秒）</text>
+  <view class="item-ipt-l ipt-box bgColorF6 borderF6 color4">
+    <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+      <view class="tui-picker-detail">
+         {{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}:{{dateTimeArray[5][dateTime[5]]}}
+      </view>
+    </picker>
+  </view>
+</view>
+<view class="sell-secKill-header-from-item">
+  <text class="color4 item-title">日期时间选择器（精确到分）</text>
+  <view class="item-ipt-l ipt-box bgColorF6 borderF6 color4">
+    <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1"
+      range="{{dateTimeArray1}}">
+      <view class="tui-picker-detail">
+        {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
+      </view>
+    </picker>
+  </view>
+</view>
